@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1391</width>
+    <height>902</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background: #FFFFFF</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="startButton">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>490</y>
+      <width>162</width>
+      <height>39</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+      <horstretch>26</horstretch>
+      <verstretch>105</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">ackground: #D9D9D9; border-radius: 25px;font-family: Inter;font-style: normal;font-weight: 400;font-size: 32px;line-height: 39px;display: flex;align-items: center;text-align: center;color: #000000;</string>
+    </property>
+    <property name="text">
+     <string>Начать</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="nainText">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>200</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="mainLine">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>400</y>
+      <width>113</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="timerView">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>450</y>
+      <width>47</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>timer</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="settingsButton">
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>540</y>
+      <width>162</width>
+      <height>39</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+      <horstretch>26</horstretch>
+      <verstretch>105</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">ackground: #D9D9D9; border-radius: 25px;font-family: Inter;font-style: normal;font-weight: 400;font-size: 32px;line-height: 39px;display: flex;align-items: center;text-align: center;color: #000000;</string>
+    </property>
+    <property name="text">
+     <string>Настройки</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="stopButton">
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>610</y>
+      <width>162</width>
+      <height>39</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+      <horstretch>26</horstretch>
+      <verstretch>105</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">ackground: #D9D9D9; border-radius: 25px;font-family: Inter;font-style: normal;font-weight: 400;font-size: 32px;line-height: 39px;display: flex;align-items: center;text-align: center;color: #000000;</string>
+    </property>
+    <property name="text">
+     <string>Стоп</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="menuButton">
+    <property name="geometry">
+     <rect>
+      <x>1010</x>
+      <y>690</y>
+      <width>162</width>
+      <height>39</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+      <horstretch>26</horstretch>
+      <verstretch>105</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">ackground: #D9D9D9; border-radius: 25px;font-family: Inter;font-style: normal;font-weight: 400;font-size: 32px;line-height: 39px;display: flex;align-items: center;text-align: center;color: #000000;</string>
+    </property>
+    <property name="text">
+     <string>Меню</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
