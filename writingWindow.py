@@ -21,7 +21,7 @@ class Ui_MainWindow(object):
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.startButton = QtWidgets.QPushButton(self.centralwidget)
-        self.startButton.setGeometry(QtCore.QRect(849, 649, 262, 105))
+        self.startButton.setGeometry(QtCore.QRect(829, 649, 262, 105))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHeightForWidth(self.startButton.sizePolicy().hasHeightForWidth())
         self.startButton.setSizePolicy(sizePolicy)

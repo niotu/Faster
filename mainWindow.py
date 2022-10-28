@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5.QtGui import QIcon
 from writingWindow import Ui_MainWindow
 
-from CONSTANTS import buttonStyle, textStyle, fadeStyle
+from CONSTANTS import buttonStyle, textStyle, fadeStyle, maxTime
 
 
 class Application(QMainWindow, Ui_MainWindow):
@@ -12,19 +12,58 @@ class Application(QMainWindow, Ui_MainWindow):
         self.icon = QIcon('icons/logo.png')
         self.filename = 'texts/text1'
         self.lines = []
-        self.__fading_button = None
+
+        self.is_running = False
+        self.secs = 0
 
         self.setupUi(self)
+
         self.setWindowIcon(self.icon)
         self.load(self.filename)
+
+        '''connects'''
+
         self.startButton.clicked.connect(lambda: self.start(self.startButton))
-        # self.line.changeEvent(QEvent.KeyPress)
+        self.settingsButton.clicked.connect(lambda: self.jumpWindow(self.settingsButton, None))
+        self.menuButton.clicked.connect(lambda: self.jumpWindow(self.menuButton, None))
+        self.stopButton.clicked.connect(lambda: self.stop(self.stopButton))
+        timer = QTimer(self)
+
+        timer.timeout.connect(self.showTime)
+
+        timer.start(100)
 
     def load(self, filename):
         with open(filename, 'r', encoding='utf-8') as f:
             file = f.readlines()
         self.lines = file
+        self.timerView.setText('0:00:00')
         self.mainText.setText(''.join(self.lines))
+
+    def start(self, button):
+        self.fade(button)
+        self.is_running = True
+
+    def jumpWindow(self, button, window):
+        self.fade(button)
+
+    def stop(self, button):
+        self.fade(button)
+        self.is_running = False
+
+    '''other functions'''
+
+    def showTime(self):
+        # checking if flag is true
+        if self.is_running:
+            # incrementing the counter
+            self.secs += 1
+
+        # getting text from count
+        text = str(self.secs / 10)
+
+        # showing text
+        self.timerView.setText(text)
 
     def fade(self, button):
         button.setStyleSheet(fadeStyle)
@@ -33,7 +72,3 @@ class Application(QMainWindow, Ui_MainWindow):
 
     def unfade(self, button):
         button.setStyleSheet(buttonStyle)
-
-    def start(self, button):
-        print('pressed')
-        self.fade(button)
