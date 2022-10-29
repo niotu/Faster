@@ -1,9 +1,11 @@
-from PyQt5.QtWidgets import QApplication
 import sys
-
+from PyQt5.QtWidgets import QApplication
+from mainWindow import Application
 from PyQt5 import QtCore
 
-from mainWindow import Application
+
+def except_hook(cls, exception, traceback):
+    sys.__excepthook__(cls, exception, traceback)
 
 
 def main():
@@ -11,6 +13,7 @@ def main():
     application = Application()
     application.setWindowTitle('Faster')
     application.showMaximized()
+    sys.excepthook = except_hook
     print("Started")
     sys.exit(app.exec())
 
