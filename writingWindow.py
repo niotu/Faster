@@ -10,9 +10,9 @@ from random import randint
 from dist.CONSTANTS import corr_style, incorr_style, good_words, textStyle, lineEditStyle
 
 
-class Application(QMainWindow, Ui_MainWindow):
+class WritingSession(QMainWindow, Ui_MainWindow):
     def __init__(self):
-        super(Application, self).__init__()
+        super(WritingSession, self).__init__()
         self.icon = QIcon('icons/logo.png')
         self.filename = 'texts/text1'
         self.lines = []

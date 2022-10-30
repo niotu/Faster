@@ -41,6 +41,7 @@ class Ui_MainWindow(object):
         self.mainLine.setGeometry(QtCore.QRect(260, 471, 1400, 40))
         self.mainLine.setObjectName("mainLine")
         self.mainLine.setStyleSheet(lineEditStyle)
+        self.mainLine.setAlignment(QtCore.Qt.AlignCenter)
         self.timerView = QtWidgets.QLabel(self.centralwidget)
         self.timerView.setGeometry(QtCore.QRect(795, 573, 330, 48))
         self.timerView.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
@@ -87,3 +88,5 @@ class Ui_MainWindow(object):
         self.settingsButton.setText(_translate("MainWindow", "Настройки"))
         self.stopButton.setText(_translate("MainWindow", "Стоп"))
         self.menuButton.setText(_translate("MainWindow", "Меню"))
+        self.showData.setToolTip('Замочек показывает возможность вводить текст в строку')
+        self.mainLine.setPlaceholderText('Нажмите начать чтобы начать')
