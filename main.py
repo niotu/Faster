@@ -1,6 +1,6 @@
 import sys
 from PyQt5.QtWidgets import QApplication
-from mainWindow import Application
+from writingWindow import Application
 from PyQt5 import QtCore
 
 
