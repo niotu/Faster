@@ -92,8 +92,8 @@ textStyle = 'position: absolute;' \
             'color: #000000;'
 
 lineEditStyle = 'position: absolute;' \
-                'border: 2px solid transparent;'\
-                'border-bottom: 3px ridge #000000;'\
+                'border: 2px solid transparent;' \
+                'border-bottom: 3px ridge #000000;' \
                 'font-family: "Inter";' \
                 'font-style: normal;' \
                 'font-weight: 400;' \
@@ -104,8 +104,31 @@ lineEditStyle = 'position: absolute;' \
                 'text-align: center;' \
                 'color: #000000;'
 
-corr_style = 'position: absolute;font-family: "Inter";font-style: normal;font-weight: 400;font-size: 32px;line-height: 39px;display: flex;align-items: center;text-align: center;color: #00FF0A;'
-incorr_style = 'position: absolute;font-family: "Inter";font-style: normal;font-weight: 400;font-size: 32px;line-height: 39px;display: flex;align-items: center;text-align: center;color: #CA0D2F;'
+corr_style = 'position: absolute;' \
+             'border: 2px solid transparent;' \
+             'border-bottom: 3px ridge #000000;' \
+             'font-family: "Inter";' \
+             'font-style: normal;' \
+             'font-weight: 400;' \
+             'font-size: 32px;' \
+             'line-height: 39px;' \
+             'display: flex;' \
+             'align-items: center;' \
+             'text-align: center;' \
+             'color: #000000;'
+
+incorr_style = 'position: absolute;' \
+               'border: 2px solid transparent;' \
+               'border-bottom: 3px ridge #CA0D2F;' \
+               'font-family: "Inter";' \
+               'font-style: normal;' \
+               'font-weight: 400;' \
+               'font-size: 32px;' \
+               'line-height: 39px;' \
+               'display: flex;' \
+               'align-items: center;' \
+               'text-align: center;' \
+               'color: #000000;'
 maxTime = 3600000
 
 good_words = ['Отлично!', 'Очень хорошо!', 'Так держать!']

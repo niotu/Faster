@@ -7,7 +7,7 @@ from writingWindow import Ui_MainWindow
 
 from random import randint
 
-from CONSTANTS import corr_style, incorr_style, good_words, textStyle
+from CONSTANTS import corr_style, incorr_style, good_words, textStyle, lineEditStyle
 
 
 class Application(QMainWindow, Ui_MainWindow):
@@ -25,13 +25,14 @@ class Application(QMainWindow, Ui_MainWindow):
 
         self.is_running = False
         self.secs = 0
+        self.is_completed = False
 
         self.setupUi(self)
 
         self.sound_player = QMediaPlayer()
-
         url = QUrl('sounds/correct-answer.mp3')
         self.content = QMediaContent(url)
+
         self.setWindowIcon(self.icon)
 
         self.load(self.filename)
@@ -66,19 +67,11 @@ class Application(QMainWindow, Ui_MainWindow):
         line = self.mainLine.text()
         curr_line = self.lines[self.current_line_num].rstrip()
         if curr_line == line:
-            self.play_sound()
             self.show_correct(True)
             self.current_line_num += 1
             self.mainLine.setText('')
             if len(self.lines) == self.current_line_num:
-                self.stop(button=None)
-                self.export_to_db(self.filename, len(self.lines), self.format_time(self.secs))
-                msgbox = QMessageBox(self)
-                msgbox.setText(good_words[randint(0, len(good_words) - 1)])
-                msgbox.setStyleSheet(textStyle)
-                msgbox.setGeometry(QRect(810, 490, 300, 100))
-                msgbox.setWindowTitle('Урааа')
-                msgbox.show()
+                self.win()
         else:
             self.show_correct(False)
 
@@ -102,23 +95,37 @@ class Application(QMainWindow, Ui_MainWindow):
 
     '''other functions'''
 
+    def win(self):
+        self.stop(button=None)
+        self.is_completed = True
+        self.export_to_db(self.filename, len(self.lines), self.format_time(self.secs), self.is_completed)
+        msgbox = QMessageBox(self)
+        msgbox.setText(good_words[randint(0, len(good_words) - 1)])
+        msgbox.setStyleSheet(textStyle)
+        msgbox.setGeometry(QRect(810, 490, 300, 100))
+        msgbox.setWindowTitle('Урааа')
+        msgbox.show()
+
     def show_correct(self, is_correct):
         if is_correct:
-            self.showData.setText('Верно')
-            self.showData.setStyleSheet(corr_style)
-            self.unfade(self.showData)
-            self.showData.setPixmap(self.unlockedPix)
-            self.fade(self.showData)
-        else:
-            self.showData.setText('Неверно')
-            self.showData.setStyleSheet(incorr_style)
-            self.unfade(self.showData)
-            self.showData.setPixmap(self.unlockedPix)
-            self.fade(self.showData)
+            sound_player = QMediaPlayer()
+            url = QUrl('sounds/correct-answer.mp3')
+            content = QMediaContent(url)
+            sound_player.setMedia(content)
+            sound_player.play()
 
-    def play_sound(self):
-        self.sound_player.setMedia(self.content)
-        self.sound_player.play()
+            self.mainLine.setStyleSheet(corr_style)
+            QTimer(self).singleShot(500, lambda: self.mainLine.setStyleSheet(lineEditStyle))
+
+        else:
+            sound_player = QMediaPlayer()
+            url = QUrl('sounds/bad-answer.mp3')
+            content = QMediaContent(url)
+            sound_player.setMedia(content)
+            sound_player.play()
+
+            self.mainLine.setStyleSheet(incorr_style)
+            QTimer(self).singleShot(500, lambda: self.mainLine.setStyleSheet(lineEditStyle))
 
     def format_time(self, time):
         minutes = time // 6000
@@ -164,5 +171,5 @@ class Application(QMainWindow, Ui_MainWindow):
         self.animation.setEndValue(0)
         self.animation.start()
 
-    def export_to_db(self, name, strings, time):
-        return name, strings, time
+    def export_to_db(self, name, strings, time, is_completed):
+        return name, strings, time, is_completed
