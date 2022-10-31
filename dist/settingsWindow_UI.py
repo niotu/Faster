@@ -36,8 +36,8 @@ class SettingsWindow(object):
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(Form)
         self.label_2.setGeometry(QtCore.QRect(460, 150, 1000, 70))
-        self.label_2.setStyleSheet("position: absolute;\n"
-                                   "\n"
+        self.label_2.setStyleSheet("QLabel {"
+                                   "position: absolute;\n"
                                    "background: #9E9E9E;\n"
                                    "border-radius: 25px;\n"
                                    "padding-left: 40px;\n"
@@ -49,13 +49,33 @@ class SettingsWindow(object):
                                    "display: flex;\n"
                                    "align-items: center;\n"
                                    "text-align: center;\n"
-                                   "\n"
-                                   "color: #000000;")
+                                   "color: #000000;"
+                                   "}"
+                                   "QLabel:hover{"
+                                   "position: absolute;\n"
+                                   "background: #696969;\n"
+                                   "border-radius: 25px;\n"
+                                   "padding-left: 40px;\n"
+                                   "font-family: \'Inter\';\n"
+                                   "font-style: normal;\n"
+                                   "font-weight: 400;\n"
+                                   "font-size: 32px;\n"
+                                   "line-height: 39px;\n"
+                                   "display: flex;\n"
+                                   "align-items: center;\n"
+                                   "text-align: center;\n"
+                                   "color: #000000;}")
         self.label_2.setObjectName("label_2")
+        self.darkTheme = QtWidgets.QPushButton(Form)
+        self.darkTheme.setGeometry(QtCore.QRect(1260, 170, 60, 30))
+        self.darkTheme.setCheckable(True)
+        self.darkTheme.setStyleSheet('background: transparent;')
+        self.darkTheme.setIconSize(QtCore.QSize(60, 30))
+        self.label_2.setToolTip('В разработке...')
         self.label_3 = QtWidgets.QLabel(Form)
         self.label_3.setGeometry(QtCore.QRect(460, 250, 1000, 70))
-        self.label_3.setStyleSheet("position: absolute;\n"
-                                   "\n"
+        self.label_3.setStyleSheet("QLabel {"
+                                   "position: absolute;\n"
                                    "background: #9E9E9E;\n"
                                    "border-radius: 25px;\n"
                                    "padding-left: 40px;\n"
@@ -67,9 +87,28 @@ class SettingsWindow(object):
                                    "display: flex;\n"
                                    "align-items: center;\n"
                                    "text-align: center;\n"
-                                   "\n"
-                                   "color: #000000;")
+                                   "color: #000000;"
+                                   "}"
+                                   "QLabel:hover{"
+                                   "position: absolute;\n"
+                                   "background: #696969;\n"
+                                   "border-radius: 25px;\n"
+                                   "padding-left: 40px;\n"
+                                   "font-family: \'Inter\';\n"
+                                   "font-style: normal;\n"
+                                   "font-weight: 400;\n"
+                                   "font-size: 32px;\n"
+                                   "line-height: 39px;\n"
+                                   "display: flex;\n"
+                                   "align-items: center;\n"
+                                   "text-align: center;\n"
+                                   "color: #000000;}")
         self.label_3.setObjectName("label_3")
+        self.letterIgnore = QtWidgets.QPushButton(Form)
+        self.letterIgnore.setGeometry(QtCore.QRect(1260, 270, 60, 30))
+        self.letterIgnore.setCheckable(True)
+        self.letterIgnore.setStyleSheet('background: transparent;')
+        self.letterIgnore.setIconSize(QtCore.QSize(60, 30))
         self.signOut = QtWidgets.QPushButton(Form)
         self.signOut.setGeometry(QtCore.QRect(778, 900, 364, 71))
         self.signOut.setStyleSheet("QPushButton {\n"
@@ -105,8 +144,8 @@ class SettingsWindow(object):
         self.signOut.setObjectName("signOut")
         self.addFiles = QtWidgets.QPushButton(Form)
         self.addFiles.setGeometry(QtCore.QRect(460, 350, 1000, 70))
-        self.addFiles.setStyleSheet("position: absolute;\n"
-                                    "\n"
+        self.addFiles.setStyleSheet("QPushButton {"
+                                    "position: absolute;\n"
                                     "background: #9E9E9E;\n"
                                     "border-radius: 25px;\n"
                                     "padding-right: 660px;\n"
@@ -118,15 +157,31 @@ class SettingsWindow(object):
                                     "display: flex;\n"
                                     "align-items: center;\n"
                                     "text-align: center;\n"
-                                    "\n"
-                                    "color: #000000;")
+                                    "color: #000000;"
+                                    "}"
+                                    "QPushButton:hover {"
+                                    "position: absolute;\n"
+                                    "background: #696969;\n"
+                                    "border-radius: 25px;\n"
+                                    "padding-right: 660px;\n"
+                                    "font-family: \'Inter\';\n"
+                                    "font-style: normal;\n"
+                                    "font-weight: 400;\n"
+                                    "font-size: 32px;\n"
+                                    "line-height: 39px;\n"
+                                    "display: flex;\n"
+                                    "align-items: center;\n"
+                                    "text-align: center;\n"
+                                    "color: #000000;"
+                                    "}")
         self.addFiles.setCheckable(False)
         self.addFiles.setFlat(False)
         self.addFiles.setObjectName("addFiles")
+        self.addFiles.setToolTip('В разработке...')
         self.resetFiles = QtWidgets.QPushButton(Form)
         self.resetFiles.setGeometry(QtCore.QRect(460, 450, 1000, 70))
-        self.resetFiles.setStyleSheet("position: absolute;\n"
-                                      "\n"
+        self.resetFiles.setStyleSheet("QPushButton {"
+                                      "position: absolute;\n"
                                       "background: #9E9E9E;\n"
                                       "border-radius: 25px;\n"
                                       "padding-right: 590px;\n"
@@ -138,8 +193,23 @@ class SettingsWindow(object):
                                       "display: flex;\n"
                                       "align-items: center;\n"
                                       "text-align: center;\n"
-                                      "\n"
-                                      "color: #000000;")
+                                      "color: #000000;"
+                                      "}"
+                                      "QPushButton:hover {"
+                                      "position: absolute;\n"
+                                      "background: #696969;\n"
+                                      "border-radius: 25px;\n"
+                                      "padding-right: 590px;\n"
+                                      "font-family: \'Inter\';\n"
+                                      "font-style: normal;\n"
+                                      "font-weight: 400;\n"
+                                      "font-size: 32px;\n"
+                                      "line-height: 39px;\n"
+                                      "display: flex;\n"
+                                      "align-items: center;\n"
+                                      "text-align: center;\n"
+                                      "color: #000000;"
+                                      "}")
         self.quit = Pic(Form)
         self.quit.setGeometry(QtCore.QRect(460, 40, 80, 75))
         self.quit.setText('aaaa')
