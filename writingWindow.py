@@ -78,6 +78,8 @@ class WritingSession(QMainWindow, WritingWindow):
     def start(self, button):
         self.is_running = True
         self.mainLine.setEnabled(True)
+        if self.is_completed:
+            self.secs = 0
         self.showData.setMovie(self.unlockedMov)
         self.unlockedMov.start()
         self.current_line_num = 0

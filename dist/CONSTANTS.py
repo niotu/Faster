@@ -106,7 +106,7 @@ lineEditStyle = 'position: absolute;' \
 
 corr_style = 'position: absolute;' \
              'border: 2px solid transparent;' \
-             'border-bottom: 3px ridge #000000;' \
+             'border-bottom: 2px ridge #52FF00;' \
              'font-family: "Inter";' \
              'font-style: normal;' \
              'font-weight: 400;' \
@@ -119,7 +119,8 @@ corr_style = 'position: absolute;' \
 
 incorr_style = 'position: absolute;' \
                'border: 2px solid transparent;' \
-               'border-bottom: 3px ridge #CA0D2F;' \
+               'border-bottom: 2px ridge #CA0D2F;' \
+               'border-radius: 15px;' \
                'font-family: "Inter";' \
                'font-style: normal;' \
                'font-weight: 400;' \

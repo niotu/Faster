@@ -19,13 +19,14 @@ class MainWindow(QStackedWidget, Ui_StackedWidget):
         self.addWidget(self.previewWindow)
         self.addWidget(self.writingWindow)
 
-        # self.loginPage.createAccount.clicked.connect(lambda: self.jump_window(self.previewWindow))
+        self.loginPage.createAccount.clicked.connect(lambda: self.jump_login_window(self.previewWindow))
+        self.previewWindow.goNext.clicked.connect(lambda : self.jump_menu_window(self.writingWindow))
 
-    def mousePressEvent(self, event):
-        if self.loginPage.createAccount.clicked:
-            print('aaa')
-            self.setCurrentWidget(self.previewWindow)
-        print('bbb')
+    def jump_login_window(self, window):
+        if self.loginPage.login():
+            self.setCurrentWidget(window)
+        else:
+            self.loginPage.incorr_reqs()
 
-    def jump_window(self, window):
+    def jump_menu_window(self, window):
         self.setCurrentWidget(window)

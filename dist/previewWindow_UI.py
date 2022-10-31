@@ -47,9 +47,9 @@ class PreviewWindow(object):
             "color: #000000;")
         self.bgLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.bgLabel.setObjectName("bgLabel")
-        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(779, 877, 352, 70))
-        self.pushButton.setStyleSheet("QPushButton{"
+        self.goNext = QtWidgets.QPushButton(self.centralwidget)
+        self.goNext.setGeometry(QtCore.QRect(779, 877, 352, 70))
+        self.goNext.setStyleSheet("QPushButton{"
                                          "position: absolute;\n"
                                          "background: #9E9E9E;\n"
                                          "border-radius: 25px;\n"
@@ -77,11 +77,11 @@ class PreviewWindow(object):
                                          "text-align: center;\n"
                                          "color: #000000;\n"
                                          "}"
-                                         )
-        self.pushButton.setObjectName("pushButton")
+                                  )
+        self.goNext.setObjectName("goNext")
         self.bgLabel.raise_()
         self.welcome_label.raise_()
-        self.pushButton.raise_()
+        self.goNext.raise_()
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -101,4 +101,4 @@ class PreviewWindow(object):
                                                       "Например: “Привет, как дела?”\n"
                                                       "\n"
                                                       "Готовы к первой тренировке?"))
-        self.pushButton.setText(_translate("MainWindow", "Начать тренировку"))
+        self.goNext.setText(_translate("MainWindow", "Начать тренировку"))

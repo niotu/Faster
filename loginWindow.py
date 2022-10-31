@@ -3,6 +3,8 @@ from PyQt5.QtWidgets import QMainWindow
 from dist.loginWindow_UI import LoginWindow
 from writingWindow import WritingSession
 
+from dist.CONSTANTS import incorr_style
+
 
 class LoginPage(QMainWindow, LoginWindow):
     def __init__(self):
@@ -14,11 +16,18 @@ class LoginPage(QMainWindow, LoginWindow):
 
     def login(self):
         name = self.nameEdit.text()
-        # password = self.passwordEdit.text()
-        # if len(name) > 1 and len(password) > 7:
-        #     self.create_account()
-        # else:
-        #     self.welcome_label.setText("Имя должно быть длиннее 2 символов,\n а пароль длиннее 7.")
+        password = self.passwordEdit.text()
+        if len(name) > 1 and len(password) > 7:
+            return True
+        else:
+            return False
 
     def create_account(self):
         print('account')
+
+    def incorr_reqs(self):
+        self.nameEdit.setStyleSheet(incorr_style)
+        self.nameEdit.setToolTip("Имя должно быть длиннее 2 символов")
+        self.passwordEdit.setStyleSheet(incorr_style)
+        self.passwordEdit.setToolTip("Пароль должен быть длиннее 7 символов")
+
