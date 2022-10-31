@@ -1,8 +1,12 @@
 import sys
-from PyQt5.QtWidgets import QApplication
+from PyQt5.QtWidgets import QApplication, QStackedWidget
+from PyQt5 import QtCore
+
 from writingWindow import WritingSession
 from loginWindow import LoginPage
-from PyQt5 import QtCore
+from mainWindow import MainWindow
+
+
 
 
 def except_hook(cls, exception, traceback):
@@ -11,7 +15,9 @@ def except_hook(cls, exception, traceback):
 
 def main():
     app = QApplication(sys.argv)
-    application = LoginPage()
+    application = MainWindow()
+    application.addWidget(LoginPage())
+    application.addWidget(WritingSession())
     application.setWindowTitle('Faster')
     application.showMaximized()
     sys.excepthook = except_hook

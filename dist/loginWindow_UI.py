@@ -12,11 +12,11 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from dist.CONSTANTS import lineEditStyle, incorr_style, corr_style
 
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1395, 904)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+class LoginWindow(QtWidgets.QWidget):
+    def setupUi(self, QWidget):
+        QWidget.setObjectName("MainWindow")
+        QWidget.resize(1395, 904)
+        self.centralwidget = QtWidgets.QWidget(QWidget)
         self.centralwidget.setObjectName("centralwidget")
         self.welcome_label = QtWidgets.QLabel(self.centralwidget)
         self.welcome_label.setGeometry(QtCore.QRect(456, 163, 1007, 168))
@@ -29,7 +29,6 @@ class Ui_MainWindow(object):
             "display: flex;\n"
             "align-items: center;\n"
             "text-align: center;\n"
-            "\n"
             "color: #000000;")
         self.welcome_label.setAlignment(QtCore.Qt.AlignCenter)
         self.welcome_label.setObjectName("welcome_label")
@@ -105,11 +104,11 @@ class Ui_MainWindow(object):
                                          "color: #000000;\n"
                                          "}"
                                          )
-        self.createAccount.setObjectName("pushButton")
-        MainWindow.setCentralWidget(self.centralwidget)
+        self.createAccount.setObjectName("createAccount")
+        QWidget.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi(QWidget)
+        QtCore.QMetaObject.connectSlotsByName(QWidget)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

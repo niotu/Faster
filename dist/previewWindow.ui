@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1395</width>
+    <height>904</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="welcome_label">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>110</y>
+      <width>611</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">position: absolute; background: #D9D9D9; border-radius: 25px; font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 32px;
+line-height: 39px;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #000000;</string>
+    </property>
+    <property name="text">
+     <string>Добро пожаловать в Faster</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="bgLabel">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>280</y>
+      <width>1401</width>
+      <height>431</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">position: absolute; background: #D9D9D9; border-radius: 25px; font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 32px;
+line-height: 39px;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #000000;</string>
+    </property>
+    <property name="text">
+     <string>Faster - программа для тренировки слепой печати на
+клавиатуре компьютера.
+
+Faster поможет вам, если вы хотите научиться быстро
+печатать различные тексты, в том числе ваши 
+собственные. 
+
+Например: “Привет, как дела?”
+
+Готовы к первой тренировке?</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>720</y>
+      <width>341</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">position: absolute;
+
+background: #9E9E9E;
+border-radius: 25px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 32px;
+line-height: 39px;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #000000;
+</string>
+    </property>
+    <property name="text">
+     <string>Начать тренировку</string>
+    </property>
+   </widget>
+   <zorder>bgLabel</zorder>
+   <zorder>welcome_label</zorder>
+   <zorder>pushButton</zorder>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

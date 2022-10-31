@@ -3,14 +3,14 @@ from PyQt5.QtCore import QTimer, QUrl, Qt, QRect
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
 from PyQt5.QtWidgets import QMainWindow, QGraphicsOpacityEffect, QMessageBox
 from PyQt5.QtGui import QIcon, QPixmap, QMovie
-from dist.writingWindow_UI import Ui_MainWindow
+from dist.writingWindow_UI import WritingWindow
 
 from random import randint
 
 from dist.CONSTANTS import corr_style, incorr_style, good_words, textStyle, lineEditStyle
 
 
-class WritingSession(QMainWindow, Ui_MainWindow):
+class WritingSession(QMainWindow, WritingWindow):
     def __init__(self):
         super(WritingSession, self).__init__()
         self.icon = QIcon('icons/logo.png')

@@ -12,13 +12,13 @@ from PyQt5 import QtCore, QtWidgets
 from dist.CONSTANTS import buttonStyle, textStyle, startButtonStyle, lineEditStyle
 
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
+class WritingWindow(QtWidgets.QWidget):
+    def setupUi(self, QWidget):
         x, y = 1920, 1080
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(x, y)
-        MainWindow.setStyleSheet("background: #FFFFFF")
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        QWidget.setObjectName("MainWindow")
+        QWidget.resize(x, y)
+        QWidget.setStyleSheet("background: #FFFFFF")
+        self.centralwidget = QtWidgets.QWidget(QWidget)
         self.centralwidget.setObjectName("centralwidget")
         self.startButton = QtWidgets.QPushButton(self.centralwidget)
         self.startButton.setGeometry(QtCore.QRect(767, 649, 386, 105))
@@ -74,10 +74,10 @@ class Ui_MainWindow(object):
         self.menuButton.setSizePolicy(sizePolicy)
         self.menuButton.setStyleSheet(buttonStyle)
         self.menuButton.setObjectName("menuButton")
-        MainWindow.setCentralWidget(self.centralwidget)
+        QWidget.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi(QWidget)
+        QtCore.QMetaObject.connectSlotsByName(QWidget)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
