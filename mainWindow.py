@@ -24,7 +24,8 @@ class MainWindow(QStackedWidget, Ui_StackedWidget):
         self.addWidget(self.writingWindow)
 
         self.loginPage.createAccount.clicked.connect(lambda: self.jump_login_window(self.previewWindow))
-        self.previewWindow.goNext.clicked.connect(lambda : self.jump_menu_window(self.menuWindow))
+        self.previewWindow.goNext.clicked.connect(lambda: self.jump_menu_window(self.menuWindow))
+        self.menuWindow.trainsView.itemDoubleClicked.connect(lambda: self.jump_writing_window(self.writingWindow))
 
     def jump_login_window(self, window):
         if self.loginPage.login():
@@ -35,7 +36,12 @@ class MainWindow(QStackedWidget, Ui_StackedWidget):
     def jump_menu_window(self, window):
         self.setCurrentWidget(window)
 
-    def jump_writing_window(self, file):
+    def jump_writing_window(self, window):
+        filename = self.menuWindow.selected_train
+        self.load_writing_window(filename)
+        self.setCurrentWidget(window)
+
+    def load_writing_window(self, file):
         with open(file, 'r', encoding=encoding) as f:
             mas = f.readlines()
         with open('texts/current_text', 'w', encoding=encoding) as f:

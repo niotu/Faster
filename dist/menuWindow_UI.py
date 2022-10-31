@@ -81,6 +81,7 @@ class MenuWindow(object):
         self.trainsView.setViewMode(QtWidgets.QListView.ListMode)
         self.trainsView.setUniformItemSizes(True)
         self.trainsView.setWordWrap(False)
+        self.trainsView.setSelectionRectVisible(False)
         self.label = QtWidgets.QLabel(Form)
         self.label.setGeometry(QtCore.QRect(553, 20, 813, 75))
         self.label.setStyleSheet("position: absolute;\n"

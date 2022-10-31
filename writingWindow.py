@@ -40,7 +40,7 @@ class WritingSession(QMainWindow, WritingWindow):
         #     print(e)
         '''connects'''
 
-        self.startButton.clicked.connect(lambda: self.start(self.startButton))
+        self.startButton.clicked.connect(lambda: self.start)
 
         self.settingsButton.clicked.connect(lambda: self.jump_window(self.settingsButton, None))
         self.menuButton.clicked.connect(lambda: self.jump_window(self.menuButton, None))
@@ -78,7 +78,7 @@ class WritingSession(QMainWindow, WritingWindow):
         else:
             self.show_correct(False)
 
-    def start(self, button):
+    def start(self):
         self.is_running = True
         self.mainLine.setEnabled(True)
         if self.is_completed:
@@ -90,7 +90,7 @@ class WritingSession(QMainWindow, WritingWindow):
     def jump_window(self, button, window):
         pass
 
-    def stop(self, button):
+    def stop(self):
         self.is_running = False
         self.mainLine.setEnabled(False)
         self.showData.setMovie(self.lockedMov)
@@ -99,7 +99,7 @@ class WritingSession(QMainWindow, WritingWindow):
     '''other functions'''
 
     def win(self):
-        self.stop(button=None)
+        self.stop()
         self.is_completed = True
         self.export_to_db(self.filename, len(self.lines), self.format_time(self.secs), self.is_completed)
         msgbox = QMessageBox(self)
