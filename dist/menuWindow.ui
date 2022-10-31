@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1920</width>
+    <height>1080</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QListWidget" name="listWidget">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>0</y>
+     <width>1146</width>
+     <height>1000</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QListWidget {
+position: absolute;
+background: #D9D9D9;
+padding-left: 69px;
+padding-right: 69px;
+padding-top: 130px;
+}
+QListWidget:item {
+padding-top: 28px;
+padding-bottom: 28px;
+background: #9E9E9E;
+border-radius: 25px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 32px;
+line-height: 39px;
+display: flex;
+align-items: center;
+text-align: center;
+color: #000000;}</string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>20</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="verticalScrollMode">
+    <enum>QAbstractItemView::ScrollPerPixel</enum>
+   </property>
+   <property name="movement">
+    <enum>QListView::Free</enum>
+   </property>
+   <property name="resizeMode">
+    <enum>QListView::Fixed</enum>
+   </property>
+   <property name="layoutMode">
+    <enum>QListView::Batched</enum>
+   </property>
+   <property name="spacing">
+    <number>28</number>
+   </property>
+   <property name="gridSize">
+    <size>
+     <width>1007</width>
+     <height>100</height>
+    </size>
+   </property>
+   <property name="viewMode">
+    <enum>QListView::ListMode</enum>
+   </property>
+   <property name="modelColumn">
+    <number>0</number>
+   </property>
+   <property name="uniformItemSizes">
+    <bool>true</bool>
+   </property>
+   <property name="batchSize">
+    <number>100</number>
+   </property>
+   <property name="wordWrap">
+    <bool>false</bool>
+   </property>
+   <item>
+    <property name="text">
+     <string>Новый элемент</string>
+    </property>
+    <property name="font">
+     <font>
+      <kerning>true</kerning>
+     </font>
+    </property>
+    <property name="textAlignment">
+     <set>AlignCenter</set>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Новый элемент</string>
+    </property>
+    <property name="textAlignment">
+     <set>AlignCenter</set>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>376</x>
+     <y>32</y>
+     <width>461</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">position: absolute;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 32px;
+line-height: 39px;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #000000;</string>
+   </property>
+   <property name="text">
+    <string>Выберите тренировку</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>1160</x>
+     <y>760</y>
+     <width>255</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+              background: #D9D9D9;
+              border-radius: 25px;
+              font-family: &quot;Inter&quot;;
+              font-style: norma;
+              font-weight: 400;
+              font-size: 32px;
+              line-height: 39px;
+              display: flex;
+              align-items: center;
+              text-align: center;
+              color: #000000;
+              }
+              QPushButton:pressed{
+              background: #3A3A3A;
+              border-radius: 25px;
+              font-family: &quot;Inter&quot;;
+              font-style: normal;
+              font-weight: 400;
+              font-size: 32px;
+              line-height: 39px;
+              display: flex;
+              align-items: center;
+              text-align: center;
+              color: #FFFFFF;
+              }
+              QPushButton:hover{
+              background: #9E9E9E;
+              border-radius: 25px;
+              position: absolute;
+              font-family: &quot;Inter&quot;;
+              font-style: normal;
+              font-weight: 400;
+              font-size: 32px;
+              line-height: 39px;
+              display: flex;
+              align-items: center;
+             text-align: center;
+              color: #000000;
+              }</string>
+   </property>
+   <property name="text">
+    <string>Настройки</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

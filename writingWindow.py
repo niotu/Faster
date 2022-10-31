@@ -7,14 +7,14 @@ from dist.writingWindow_UI import WritingWindow
 
 from random import randint
 
-from dist.CONSTANTS import corr_style, incorr_style, good_words, textStyle, lineEditStyle
+from dist.CONSTANTS import corr_style, incorr_style, good_words, textStyle, lineEditStyle, encoding
 
 
 class WritingSession(QMainWindow, WritingWindow):
     def __init__(self):
         super(WritingSession, self).__init__()
         self.icon = QIcon('icons/logo.png')
-        self.filename = 'texts/text1'
+        self.filename = 'texts/current_text'
         self.lines = []
         self.current_line_num = 0
 
@@ -34,8 +34,10 @@ class WritingSession(QMainWindow, WritingWindow):
         self.content = QMediaContent(url)
 
         self.setWindowIcon(self.icon)
-
-        self.load(self.filename)
+        # try:
+        #     self.load(self.filename)
+        # except Exception as e:
+        #     print(e)
         '''connects'''
 
         self.startButton.clicked.connect(lambda: self.start(self.startButton))
@@ -57,11 +59,11 @@ class WritingSession(QMainWindow, WritingWindow):
         self.mainLine.setEnabled(False)
         self.showData.setPixmap(self.lockedPix)
 
-        with open(filename, 'r', encoding='utf-8') as f:
+        with open(filename, 'r', encoding=encoding) as f:
             file = f.readlines()
         self.lines = file
         self.timerView.setText('0:00:00')
-        self.mainText.setText(''.join(self.lines))
+        self.mainText.setText(''.join(self.lines[self.current_line_num]))
 
     def check_lines(self):
         line = self.mainLine.text()
@@ -72,6 +74,7 @@ class WritingSession(QMainWindow, WritingWindow):
             self.mainLine.setText('')
             if len(self.lines) == self.current_line_num:
                 self.win()
+            self.mainText.setText(self.lines[self.current_line_num])
         else:
             self.show_correct(False)
 

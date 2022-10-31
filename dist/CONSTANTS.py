@@ -133,3 +133,5 @@ incorr_style = 'position: absolute;' \
 maxTime = 3600000
 
 good_words = ['Отлично!', 'Очень хорошо!', 'Так держать!']
+
+encoding = 'utf-8'

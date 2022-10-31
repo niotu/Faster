@@ -1,12 +1,14 @@
 import sys
+import os
+
+from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QApplication, QStackedWidget
 from PyQt5 import QtCore
 
 from writingWindow import WritingSession
 from loginWindow import LoginPage
 from mainWindow import MainWindow
-
-
+from dist.CONSTANTS import encoding
 
 
 def except_hook(cls, exception, traceback):
@@ -14,11 +16,14 @@ def except_hook(cls, exception, traceback):
 
 
 def main():
+    with open('texts/current_text', 'w', encoding=encoding) as f:
+        f.write('')
     app = QApplication(sys.argv)
     application = MainWindow()
     application.addWidget(LoginPage())
     application.addWidget(WritingSession())
     application.setWindowTitle('Faster')
+    application.setWindowIcon(QIcon('icons/logo.png'))
     application.showMaximized()
     sys.excepthook = except_hook
     print("Started")
@@ -28,3 +33,4 @@ def main():
 if __name__ == "__main__":
     print("Starting...")
     main()
+    os.remove('texts/current_text')
