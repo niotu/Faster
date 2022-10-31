@@ -91,6 +91,17 @@ textStyle = 'position: absolute;' \
             'text-align: center;' \
             'color: #000000;'
 
+subTextStyle = 'position: absolute;' \
+               'font-family: "Inter";' \
+               'font-style: normal;' \
+               'font-weight: 400;' \
+               'font-size: 32px;' \
+               'line-height: 39px;' \
+               'display: flex;' \
+               'align-items: center;' \
+               'text-align: center;' \
+               'color: #9E9E9E;'
+
 lineEditStyle = 'position: absolute;' \
                 'border: 2px solid transparent;' \
                 'border-bottom: 3px ridge #000000;' \

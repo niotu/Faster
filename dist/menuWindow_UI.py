@@ -97,49 +97,49 @@ class MenuWindow(object):
                                  "color: #000000;")
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
-        self.pushButton = QtWidgets.QPushButton(Form)
-        self.pushButton.setGeometry(QtCore.QRect(1609, 901, 255, 81))
-        self.pushButton.setStyleSheet("QPushButton{\n"
-                                      "              background: #D9D9D9;\n"
-                                      "              border-radius: 25px;\n"
-                                      "              font-family: \"Inter\";\n"
-                                      "              font-style: norma;\n"
-                                      "              font-weight: 400;\n"
-                                      "              font-size: 32px;\n"
-                                      "              line-height: 39px;\n"
-                                      "              display: flex;\n"
-                                      "              align-items: center;\n"
-                                      "              text-align: center;\n"
-                                      "              color: #000000;\n"
-                                      "              }\n"
-                                      "              QPushButton:pressed{\n"
-                                      "              background: #3A3A3A;\n"
-                                      "              border-radius: 25px;\n"
-                                      "              font-family: \"Inter\";\n"
-                                      "              font-style: normal;\n"
-                                      "              font-weight: 400;\n"
-                                      "              font-size: 32px;\n"
-                                      "              line-height: 39px;\n"
-                                      "              display: flex;\n"
-                                      "              align-items: center;\n"
-                                      "              text-align: center;\n"
-                                      "              color: #FFFFFF;\n"
-                                      "              }\n"
-                                      "              QPushButton:hover{\n"
-                                      "              background: #9E9E9E;\n"
-                                      "              border-radius: 25px;\n"
-                                      "              position: absolute;\n"
-                                      "              font-family: \"Inter\";\n"
-                                      "              font-style: normal;\n"
-                                      "              font-weight: 400;\n"
-                                      "              font-size: 32px;\n"
-                                      "              line-height: 39px;\n"
-                                      "              display: flex;\n"
-                                      "              align-items: center;\n"
-                                      "             text-align: center;\n"
-                                      "              color: #000000;\n"
-                                      "              }")
-        self.pushButton.setObjectName("pushButton")
+        self.settingsButton = QtWidgets.QPushButton(Form)
+        self.settingsButton.setGeometry(QtCore.QRect(1609, 901, 255, 81))
+        self.settingsButton.setStyleSheet("QPushButton{\n"
+                                          "              background: #D9D9D9;\n"
+                                          "              border-radius: 25px;\n"
+                                          "              font-family: \"Inter\";\n"
+                                          "              font-style: norma;\n"
+                                          "              font-weight: 400;\n"
+                                          "              font-size: 32px;\n"
+                                          "              line-height: 39px;\n"
+                                          "              display: flex;\n"
+                                          "              align-items: center;\n"
+                                          "              text-align: center;\n"
+                                          "              color: #000000;\n"
+                                          "              }\n"
+                                          "              QPushButton:pressed{\n"
+                                          "              background: #3A3A3A;\n"
+                                          "              border-radius: 25px;\n"
+                                          "              font-family: \"Inter\";\n"
+                                          "              font-style: normal;\n"
+                                          "              font-weight: 400;\n"
+                                          "              font-size: 32px;\n"
+                                          "              line-height: 39px;\n"
+                                          "              display: flex;\n"
+                                          "              align-items: center;\n"
+                                          "              text-align: center;\n"
+                                          "              color: #FFFFFF;\n"
+                                          "              }\n"
+                                          "              QPushButton:hover{\n"
+                                          "              background: #9E9E9E;\n"
+                                          "              border-radius: 25px;\n"
+                                          "              position: absolute;\n"
+                                          "              font-family: \"Inter\";\n"
+                                          "              font-style: normal;\n"
+                                          "              font-weight: 400;\n"
+                                          "              font-size: 32px;\n"
+                                          "              line-height: 39px;\n"
+                                          "              display: flex;\n"
+                                          "              align-items: center;\n"
+                                          "             text-align: center;\n"
+                                          "              color: #000000;\n"
+                                          "              }")
+        self.settingsButton.setObjectName("pushButton")
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -151,4 +151,4 @@ class MenuWindow(object):
         self.trainsView.setSortingEnabled(False)
         self.trainsView.setSortingEnabled(__sortingEnabled)
         self.label.setText(_translate("Form", "Выберите тренировку"))
-        self.pushButton.setText(_translate("Form", "Настройки"))
+        self.settingsButton.setText(_translate("Form", "Настройки"))

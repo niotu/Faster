@@ -8,7 +8,7 @@ from dist.CONSTANTS import encoding
 class MenuPage(QMainWindow, MenuWindow):
     def __init__(self):
         super(MenuPage, self).__init__()
-        self.selected_train = None
+        self.selected_train_path = None
         self.texts = []
         self.titles = []
 
@@ -24,7 +24,6 @@ class MenuPage(QMainWindow, MenuWindow):
         titles = []
 
         texts = list(map(str.rstrip, texts))
-        print(texts)
         self.texts = texts
 
         for text in texts:
@@ -48,5 +47,7 @@ class MenuPage(QMainWindow, MenuWindow):
 
     def Clicked(self, item):
         train = item.text()
-        self.selected_train = 'texts/' + self.texts[self.titles.index(train)]
-        print(train)
+        self.selected_train_path = 'texts/' + self.texts[self.titles.index(train)]
+
+    def update_texts(self):
+        pass

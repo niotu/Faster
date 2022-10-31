@@ -9,7 +9,7 @@
 
 
 from PyQt5 import QtCore, QtWidgets
-from dist.CONSTANTS import buttonStyle, textStyle, startButtonStyle, lineEditStyle
+from dist.CONSTANTS import buttonStyle, textStyle, startButtonStyle, lineEditStyle, subTextStyle
 
 
 class WritingWindow(QtWidgets.QWidget):
@@ -27,11 +27,22 @@ class WritingWindow(QtWidgets.QWidget):
         self.startButton.setSizePolicy(sizePolicy)
         self.startButton.setStyleSheet(startButtonStyle)
         self.startButton.setObjectName("startButton")
-        self.mainText = QtWidgets.QLabel(self.centralwidget)
-        self.mainText.setGeometry(QtCore.QRect(x // 2 - 1336 // 2, y // 2 - 185 // 2 - 262, 1336, 185))
-        self.mainText.setObjectName("mainText")
-        self.mainText.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
-        self.mainText.setStyleSheet(textStyle)
+        self.previousLineView = QtWidgets.QLabel(self.centralwidget)
+        self.previousLineView.setGeometry(QtCore.QRect(x // 2 - 1336 // 2, y // 2 - 186 // 2 - 262, 1336, 186 // 3))
+        self.previousLineView.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+        self.previousLineView.setStyleSheet(subTextStyle)
+        self.previousLineView.setText('previousLineView')
+        self.currentLineView = QtWidgets.QLabel(self.centralwidget)
+        self.currentLineView.setGeometry(
+            QtCore.QRect(x // 2 - 1336 // 2, y // 2 - 186 // 2 - 262 + 186 // 3, 1336, 186 // 3))
+        self.currentLineView.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+        self.currentLineView.setStyleSheet(textStyle)
+        self.nextLineView = QtWidgets.QLabel(self.centralwidget)
+        self.nextLineView.setGeometry(
+            QtCore.QRect(x // 2 - 1336 // 2, y // 2 - 186 // 2 - 262 + 186 // 3 * 2, 1336, 186 // 3))
+        self.nextLineView.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+        self.nextLineView.setStyleSheet(subTextStyle)
+        self.nextLineView.setText('nextLineView')
         self.showData = QtWidgets.QLabel(self.centralwidget)
         self.showData.setGeometry(QtCore.QRect(894, 520, 132, 39))
         self.showData.setObjectName("showCorrect")
@@ -83,7 +94,7 @@ class WritingWindow(QtWidgets.QWidget):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.startButton.setText(_translate("MainWindow", "Начать"))
-        self.mainText.setText(_translate("MainWindow", "TextLabel"))
+        self.currentLineView.setText(_translate("MainWindow", "TextLabel"))
         self.timerView.setText(_translate("MainWindow", "timer"))
         self.settingsButton.setText(_translate("MainWindow", "Настройки"))
         self.stopButton.setText(_translate("MainWindow", "Стоп"))

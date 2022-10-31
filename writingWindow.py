@@ -58,12 +58,19 @@ class WritingSession(QMainWindow, WritingWindow):
     def load(self, filename):
         self.mainLine.setEnabled(False)
         self.showData.setPixmap(self.lockedPix)
-
         with open(filename, 'r', encoding=encoding) as f:
             file = f.readlines()
         self.lines = file
         self.timerView.setText('0:00:00')
-        self.mainText.setText(''.join(self.lines[self.current_line_num]))
+        text1 = ''
+        text2 = ''.join(self.lines[self.current_line_num])
+        if len(self.lines) > 1:
+            text3 = ''.join(self.lines[self.current_line_num + 1])
+        else:
+            text3 = ''
+        self.previousLineView.setText(text1)
+        self.currentLineView.setText(text2)
+        self.nextLineView.setText(text3)
 
     def check_lines(self):
         line = self.mainLine.text()
@@ -74,7 +81,18 @@ class WritingSession(QMainWindow, WritingWindow):
             self.mainLine.setText('')
             if len(self.lines) == self.current_line_num:
                 self.win()
-            self.mainText.setText(self.lines[self.current_line_num])
+            else:
+                text1, text2, text3 = '', '', ''
+                if 0 < self.current_line_num < len(self.lines) - 1:
+                    text1 = ''.join(self.lines[self.current_line_num - 1])
+                    text2 = ''.join(self.lines[self.current_line_num])
+                    text3 = ''.join(self.lines[self.current_line_num + 1])
+                elif self.current_line_num == len(self.lines) - 1:
+                    text1 = ''.join(self.lines[self.current_line_num - 1])
+                    text2 = ''.join(self.lines[self.current_line_num])
+                self.previousLineView.setText(text1)
+                self.currentLineView.setText(text2)
+                self.nextLineView.setText(text3)
         else:
             self.show_correct(False)
 
@@ -102,6 +120,7 @@ class WritingSession(QMainWindow, WritingWindow):
         self.stop(button=None)
         self.is_completed = True
         self.export_to_db(self.filename, len(self.lines), self.format_time(self.secs), self.is_completed)
+        self.current_line_num = 0
         msgbox = QMessageBox(self)
         msgbox.setText(good_words[randint(0, len(good_words) - 1)])
         msgbox.setStyleSheet(textStyle)
