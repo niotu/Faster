@@ -1,3 +1,5 @@
+import json
+
 from PyQt5.QtWidgets import QApplication, QStackedWidget, QMainWindow
 
 from dist.main_UI import Ui_StackedWidget
@@ -7,7 +9,7 @@ from previewWindow import PreviewPage
 from menuWindow import MenuPage
 from settingsWindow import SettingsPage
 
-from dist.CONSTANTS import encoding
+from dist.CONSTANTS import encoding, default_settings, default_account
 
 
 class MainWindow(QStackedWidget, Ui_StackedWidget):
@@ -18,6 +20,11 @@ class MainWindow(QStackedWidget, Ui_StackedWidget):
         self.previewWindow = PreviewPage()
         self.menuWindow = MenuPage()
         self.settingsWindow = SettingsPage()
+
+        self.is_logined = None
+        self.name = ''
+
+        self.account = {}
 
         self.setupUi(self)
 
@@ -34,9 +41,14 @@ class MainWindow(QStackedWidget, Ui_StackedWidget):
         self.writingWindow.menuButton.clicked.connect(lambda: self.jump_menu_window(self.menuWindow))
         self.writingWindow.settingsButton.clicked.connect(lambda: self.jump_settings_window(self.writingWindow))
         self.settingsWindow.quit.click.connect(lambda: self.jump_from_settings_window())
+        self.settingsWindow.signOut.clicked.connect(self.sign_out)
+
+        self.load()
 
     def jump_login_window(self, window):
         if self.loginPage.login():
+            self.load()
+            self.previewWindow.load(self.name)
             self.setCurrentWidget(window)
         else:
             self.loginPage.incorr_reqs()
@@ -64,3 +76,25 @@ class MainWindow(QStackedWidget, Ui_StackedWidget):
 
     def jump_from_settings_window(self):
         self.setCurrentWidget(self.settingsWindow.previousWindow)
+
+    def load(self):
+        with open('account_data/account.json', 'r') as account_data:
+            self.account = json.load(account_data)
+        self.is_logined = self.account['is_logined']
+        self.name = self.account['name']
+        if self.is_logined:
+            self.previewWindow.load(self.name)
+            self.setCurrentWidget(self.previewWindow)
+
+    def sign_out(self):
+        print('dwadwdadw')
+        with open('account_data/account.json', 'w') as account:
+            json.dump(default_account, account)
+
+        with open('settings/settings.json', 'w') as settings:
+            json.dump(default_settings, settings)
+        self.load()
+        self.settingsWindow.load_settings()
+        self.menuWindow.load()
+        self.loginPage.reset()
+        self.setCurrentWidget(self.loginPage)

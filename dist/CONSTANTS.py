@@ -146,3 +146,6 @@ maxTime = 3600000
 good_words = ['Отлично!', 'Очень хорошо!', 'Так держать!']
 
 encoding = 'utf-8'
+
+default_settings = {"darkTheme": False, "letterIgnore": False}
+default_account = {"is_logined": False, "name": "name", "password": "password"}

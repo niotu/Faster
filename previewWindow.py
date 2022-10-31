@@ -8,3 +8,6 @@ class PreviewPage(QMainWindow, PreviewWindow):
         super(PreviewPage, self).__init__()
 
         self.setupUi(self)
+
+    def load(self, name):
+        self.welcome_label.setText(name + ', добро пожаловать в Faster')
