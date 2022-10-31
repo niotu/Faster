@@ -11,7 +11,6 @@ class LoginPage(QMainWindow, LoginWindow):
         super(LoginPage, self).__init__()
 
         self.setupUi(self)
-
         self.createAccount.clicked.connect(self.login)
 
     def login(self):

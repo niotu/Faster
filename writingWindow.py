@@ -18,6 +18,8 @@ class WritingSession(QMainWindow, WritingWindow):
         self.lines = []
         self.current_line_num = 0
 
+        self.is_letter_ignore = None
+
         self.lockedPix = QPixmap('icons/lock.png')
         self.unlockedPix = QPixmap('icons/unlock.png')
         self.unlockedMov = QMovie('icons/unlock.gif')
@@ -55,6 +57,9 @@ class WritingSession(QMainWindow, WritingWindow):
         if event.key() in (Qt.Key_Enter, Qt.Key_Return) and self.is_running:
             self.check_lines()
 
+    def set_letter_ignore(self, param):
+        self.is_letter_ignore = param
+
     def load(self, filename):
         self.mainLine.setEnabled(False)
         self.showData.setPixmap(self.lockedPix)
@@ -75,6 +80,9 @@ class WritingSession(QMainWindow, WritingWindow):
     def check_lines(self):
         line = self.mainLine.text()
         curr_line = self.lines[self.current_line_num].rstrip()
+        if self.is_letter_ignore:
+            line = line.replace("ё", 'е').replace('Ё', 'Е')
+            curr_line = curr_line.replace("ё", 'е').replace('Ё', 'Е')
         if curr_line == line:
             self.show_correct(True)
             self.current_line_num += 1
@@ -103,7 +111,7 @@ class WritingSession(QMainWindow, WritingWindow):
             self.secs = 0
         self.showData.setMovie(self.unlockedMov)
         self.unlockedMov.start()
-        self.current_line_num = 0
+        self.mainLine.setFocus()
 
     def jump_window(self, button, window):
         pass

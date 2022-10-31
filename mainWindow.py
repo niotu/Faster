@@ -47,6 +47,7 @@ class MainWindow(QStackedWidget, Ui_StackedWidget):
 
     def jump_writing_window(self, window):
         filename = self.menuWindow.selected_train_path
+        self.writingWindow.set_letter_ignore(self.settingsWindow.is_letter_ignore)
         self.load_writing_window(filename)
         self.setCurrentWidget(window)
 
