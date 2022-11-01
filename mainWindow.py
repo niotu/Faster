@@ -1,15 +1,14 @@
 import json
 
-from PyQt5.QtWidgets import QApplication, QStackedWidget, QMainWindow
-
-from dist.main_UI import Ui_StackedWidget
-from loginWindow import LoginPage
-from writingWindow import WritingSession
-from previewWindow import PreviewPage
-from menuWindow import MenuPage
-from settingsWindow import SettingsPage
+from PyQt5.QtWidgets import QStackedWidget
 
 from dist.CONSTANTS import encoding, default_settings, default_account
+from dist.main_UI import Ui_StackedWidget
+from loginWindow import LoginPage
+from menuWindow import MenuPage
+from previewWindow import PreviewPage
+from settingsWindow import SettingsPage
+from writingWindow import WritingSession
 
 
 class MainWindow(QStackedWidget, Ui_StackedWidget):
@@ -66,7 +65,7 @@ class MainWindow(QStackedWidget, Ui_StackedWidget):
     def load_writing_window(self, file):
         with open(file, 'r', encoding=encoding) as f:
             mas = f.readlines()
-        with open('texts/current_text', 'w', encoding=encoding) as f:
+        with open('data/current_text', 'w', encoding=encoding) as f:
             f.write(''.join(mas))
         self.writingWindow.load(self.writingWindow.filename)
 
@@ -78,7 +77,7 @@ class MainWindow(QStackedWidget, Ui_StackedWidget):
         self.setCurrentWidget(self.settingsWindow.previousWindow)
 
     def load(self):
-        with open('account_data/account.json', 'r') as account_data:
+        with open('data/account.json', 'r') as account_data:
             self.account = json.load(account_data)
         self.is_logined = self.account['is_logined']
         self.name = self.account['name']
@@ -88,10 +87,10 @@ class MainWindow(QStackedWidget, Ui_StackedWidget):
 
     def sign_out(self):
         print('dwadwdadw')
-        with open('account_data/account.json', 'w') as account:
+        with open('data/account.json', 'w') as account:
             json.dump(default_account, account)
 
-        with open('settings/settings.json', 'w') as settings:
+        with open('data/settings.json', 'w') as settings:
             json.dump(default_settings, settings)
         self.load()
         self.settingsWindow.load_settings()

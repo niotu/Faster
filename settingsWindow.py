@@ -1,12 +1,10 @@
 import json
 
-from PyQt5 import QtCore, QtGui
-from PyQt5.QtCore import QSize
+from PyQt5 import QtGui
 from PyQt5.QtGui import QPixmap, QIcon
-from PyQt5.QtWidgets import QMainWindow, QListWidgetItem, QMessageBox
+from PyQt5.QtWidgets import QMainWindow
 
 from dist.settingsWindow_UI import SettingsWindow
-from dist.CONSTANTS import encoding
 
 
 class SettingsPage(QMainWindow, SettingsWindow):
@@ -50,9 +48,8 @@ class SettingsPage(QMainWindow, SettingsWindow):
         self.settings = {'darkTheme': self.is_dark_theme, 'letterIgnore': self.is_letter_ignore}
         self.write_settings(self.settings)
 
-
     def load_settings(self):
-        with open('settings/settings.json', 'r') as fileobject:
+        with open('data/settings.json', 'r') as fileobject:
             settings = json.load(fileobject)
         self.is_dark_theme = settings['darkTheme']
         self.is_letter_ignore = settings['letterIgnore']
@@ -67,5 +64,5 @@ class SettingsPage(QMainWindow, SettingsWindow):
         self.set_letter_ignore()
 
     def write_settings(self, settings):
-        with open('settings/settings.json', 'w') as fileobject:
+        with open('data/settings.json', 'w') as fileobject:
             json.dump(settings, fileobject)

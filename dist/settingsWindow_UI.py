@@ -10,7 +10,6 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import pyqtSignal
-from qtwidgets import AnimatedToggle
 
 
 class SettingsWindow(object):

@@ -1,14 +1,13 @@
-import sys
 import os
+import sys
 
 from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QApplication, QStackedWidget
-from PyQt5 import QtCore
+from PyQt5.QtWidgets import QApplication
 
-from writingWindow import WritingSession
+from dist.CONSTANTS import encoding
 from loginWindow import LoginPage
 from mainWindow import MainWindow
-from dist.CONSTANTS import encoding
+from writingWindow import WritingSession
 
 
 def except_hook(cls, exception, traceback):
@@ -16,7 +15,7 @@ def except_hook(cls, exception, traceback):
 
 
 def main():
-    with open('texts/current_text', 'w', encoding=encoding) as f:
+    with open('data/current_text', 'w', encoding=encoding) as f:
         f.write('')
     app = QApplication(sys.argv)
     application = MainWindow()
@@ -33,4 +32,4 @@ def main():
 if __name__ == "__main__":
     print("Starting...")
     main()
-    os.remove('texts/current_text')
+    os.remove('data/current_text')

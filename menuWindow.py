@@ -1,8 +1,8 @@
 from PyQt5 import QtCore, QtGui
-from PyQt5.QtWidgets import QMainWindow, QListWidgetItem, QMessageBox
+from PyQt5.QtWidgets import QMainWindow, QListWidgetItem
 
-from dist.menuWindow_UI import MenuWindow
 from dist.CONSTANTS import encoding
+from dist.menuWindow_UI import MenuWindow
 
 
 class MenuPage(QMainWindow, MenuWindow):
@@ -19,7 +19,7 @@ class MenuPage(QMainWindow, MenuWindow):
         self.trainsView.itemClicked.connect(self.Clicked)
 
     def load(self):
-        with open('texts/all_texts.txt', 'r', encoding=encoding) as f:
+        with open('data/all_texts.txt', 'r', encoding=encoding) as f:
             texts = f.readlines()
         titles = []
 

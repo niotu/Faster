@@ -2,10 +2,8 @@ import json
 
 from PyQt5.QtWidgets import QMainWindow
 
-from dist.loginWindow_UI import LoginWindow
-from writingWindow import WritingSession
-
 from dist.CONSTANTS import incorr_style
+from dist.loginWindow_UI import LoginWindow
 
 
 class LoginPage(QMainWindow, LoginWindow):
@@ -31,7 +29,7 @@ class LoginPage(QMainWindow, LoginWindow):
 
     def create_account(self):
         data = {"is_logined": True, "name": self.name, "password": self.password}
-        with open('account_data/account.json', 'w') as account:
+        with open('data/account.json', 'w') as account:
             json.dump(data, account)
 
     def incorr_reqs(self):

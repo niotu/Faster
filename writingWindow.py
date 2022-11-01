@@ -1,20 +1,20 @@
-from PyQt5 import QtCore
-from PyQt5.QtCore import QTimer, QUrl, Qt, QRect
-from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
-from PyQt5.QtWidgets import QMainWindow, QGraphicsOpacityEffect, QMessageBox
-from PyQt5.QtGui import QIcon, QPixmap, QMovie
-from dist.writingWindow_UI import WritingWindow
-
 from random import randint
 
+from PyQt5 import QtCore
+from PyQt5.QtCore import QTimer, QUrl, Qt, QRect
+from PyQt5.QtGui import QIcon, QPixmap, QMovie
+from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
+from PyQt5.QtWidgets import QMainWindow, QGraphicsOpacityEffect, QMessageBox
+
 from dist.CONSTANTS import corr_style, incorr_style, good_words, textStyle, lineEditStyle, encoding
+from dist.writingWindow_UI import WritingWindow
 
 
 class WritingSession(QMainWindow, WritingWindow):
     def __init__(self):
         super(WritingSession, self).__init__()
         self.icon = QIcon('icons/logo.png')
-        self.filename = 'texts/current_text'
+        self.filename = 'data/current_text'
         self.lines = []
         self.current_line_num = 0
 
@@ -36,16 +36,9 @@ class WritingSession(QMainWindow, WritingWindow):
         self.content = QMediaContent(url)
 
         self.setWindowIcon(self.icon)
-        # try:
-        #     self.load(self.filename)
-        # except Exception as e:
-        #     print(e)
         '''connects'''
 
         self.startButton.clicked.connect(lambda: self.start(self.startButton))
-
-        self.settingsButton.clicked.connect(lambda: self.jump_window(self.settingsButton, None))
-        self.menuButton.clicked.connect(lambda: self.jump_window(self.menuButton, None))
         self.stopButton.clicked.connect(lambda: self.stop(self.stopButton))
         '''set timer'''
 
@@ -61,6 +54,7 @@ class WritingSession(QMainWindow, WritingWindow):
         self.is_letter_ignore = param
 
     def load(self, filename):
+        self.secs = 0
         self.mainLine.setEnabled(False)
         self.showData.setPixmap(self.lockedPix)
         with open(filename, 'r', encoding=encoding) as f:
@@ -112,9 +106,6 @@ class WritingSession(QMainWindow, WritingWindow):
         self.showData.setMovie(self.unlockedMov)
         self.unlockedMov.start()
         self.mainLine.setFocus()
-
-    def jump_window(self, button, window):
-        pass
 
     def stop(self, button):
         self.is_running = False
@@ -195,6 +186,7 @@ class WritingSession(QMainWindow, WritingWindow):
     def unfade(self, widget):
         self.effect = QGraphicsOpacityEffect()
         widget.setGraphicsEffect(self.effect)
+
         self.animation = QtCore.QPropertyAnimation(self.effect, b"opacity")
         self.animation.setDuration(1000)
         self.animation.setStartValue(1)

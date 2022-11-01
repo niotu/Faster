@@ -9,6 +9,7 @@
 
 
 from PyQt5 import QtCore, QtWidgets
+
 from dist.CONSTANTS import buttonStyle, textStyle, startButtonStyle, lineEditStyle, subTextStyle
 
 
