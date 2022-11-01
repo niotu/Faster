@@ -74,7 +74,6 @@ class MenuWindow(object):
 
         self.trainsView.setVerticalScrollMode(QtWidgets.QAbstractItemView.ScrollPerPixel)
         self.trainsView.verticalScrollBar().hide()
-        self.trainsView.setMovement(QtWidgets.QListView.Free)
         self.trainsView.setResizeMode(QtWidgets.QListView.Fixed)
         self.trainsView.setLayoutMode(QtWidgets.QListView.Batched)
         self.trainsView.setGridSize(QtCore.QSize(1007, 120))
