@@ -58,7 +58,6 @@ class SettingsPage(QMainWindow, SettingsWindow):
         self.average_time = self.load_time()
         self.averageTimeView.setText('Среднее время выполнения: ' + self.average_time)
 
-
         self.settings = settings
 
         if self.is_dark_theme:
