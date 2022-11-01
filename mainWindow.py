@@ -2,8 +2,8 @@ import json
 
 from PyQt5.QtWidgets import QStackedWidget
 
-from dist.CONSTANTS import encoding, default_settings, default_account
-from dist.main_UI import Ui_StackedWidget
+from const.CONSTANTS import encoding, default_settings, default_account
+from const.main_UI import Ui_StackedWidget
 from loginWindow import LoginPage
 from menuWindow import MenuPage
 from previewWindow import PreviewPage

@@ -6,8 +6,8 @@ from PyQt5.QtGui import QIcon, QPixmap, QMovie
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
 from PyQt5.QtWidgets import QMainWindow, QGraphicsOpacityEffect, QMessageBox
 
-from dist.CONSTANTS import corr_style, incorr_style, good_words, textStyle, lineEditStyle, encoding, buttonStyle
-from dist.writingWindow_UI import WritingWindow
+from const.CONSTANTS import corr_style, incorr_style, good_words, textStyle, lineEditStyle, encoding, buttonStyle
+from const.writingWindow_UI import WritingWindow
 
 
 class WritingSession(QMainWindow, WritingWindow):

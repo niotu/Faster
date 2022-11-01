@@ -10,7 +10,7 @@
 
 from PyQt5 import QtCore, QtWidgets
 
-from dist.CONSTANTS import buttonStyle, textStyle, startButtonStyle, lineEditStyle, subTextStyle
+from const.CONSTANTS import buttonStyle, textStyle, startButtonStyle, lineEditStyle, subTextStyle
 
 
 class WritingWindow(QtWidgets.QWidget):

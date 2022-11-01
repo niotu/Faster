@@ -1,6 +1,6 @@
 import json
 
-from dist.CONSTANTS import default_account, default_settings
+from const.CONSTANTS import default_account, default_settings
 
 with open('data/account.json', 'w') as account:
     json.dump(default_account, account)

@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QMainWindow
 
-from dist.previewWindow_UI import PreviewWindow
+from const.previewWindow_UI import PreviewWindow
 
 
 class PreviewPage(QMainWindow, PreviewWindow):

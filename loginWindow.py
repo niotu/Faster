@@ -2,8 +2,8 @@ import json
 
 from PyQt5.QtWidgets import QMainWindow
 
-from dist.CONSTANTS import incorr_style
-from dist.loginWindow_UI import LoginWindow
+from const.CONSTANTS import incorr_style
+from const.loginWindow_UI import LoginWindow
 
 
 class LoginPage(QMainWindow, LoginWindow):

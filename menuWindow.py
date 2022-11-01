@@ -1,8 +1,8 @@
 from PyQt5 import QtCore, QtGui
 from PyQt5.QtWidgets import QMainWindow, QListWidgetItem
 
-from dist.CONSTANTS import encoding
-from dist.menuWindow_UI import MenuWindow
+from const.CONSTANTS import encoding
+from const.menuWindow_UI import MenuWindow
 
 
 class MenuPage(QMainWindow, MenuWindow):

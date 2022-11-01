@@ -4,7 +4,7 @@ from PyQt5 import QtGui
 from PyQt5.QtGui import QPixmap, QIcon
 from PyQt5.QtWidgets import QMainWindow
 
-from dist.settingsWindow_UI import SettingsWindow
+from const.settingsWindow_UI import SettingsWindow
 
 
 class SettingsPage(QMainWindow, SettingsWindow):
