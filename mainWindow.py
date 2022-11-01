@@ -70,6 +70,7 @@ class MainWindow(QStackedWidget, Ui_StackedWidget):
         self.writingWindow.load(self.writingWindow.filename)
 
     def jump_settings_window(self, window):
+        self.settingsWindow.load_settings()
         self.settingsWindow.setPreviousWindow(window)
         self.setCurrentWidget(self.settingsWindow)
 
@@ -86,14 +87,21 @@ class MainWindow(QStackedWidget, Ui_StackedWidget):
             self.setCurrentWidget(self.previewWindow)
 
     def sign_out(self):
-        print('dwadwdadw')
         with open('data/account.json', 'w') as account:
             json.dump(default_account, account)
 
         with open('data/settings.json', 'w') as settings:
             json.dump(default_settings, settings)
+
+        with open('data/times.txt', 'w') as times:
+            times.write('')
+
         self.load()
+
+        self.settingsWindow.darkTheme.setChecked(False)
+        self.settingsWindow.letterIgnore.setChecked(False)
         self.settingsWindow.load_settings()
+
         self.menuWindow.load()
         self.loginPage.reset()
         self.setCurrentWidget(self.loginPage)

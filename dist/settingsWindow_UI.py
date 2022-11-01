@@ -213,6 +213,21 @@ class SettingsWindow(object):
         self.quit.setGeometry(QtCore.QRect(460, 40, 80, 75))
         self.quit.setText('aaaa')
 
+        self.averageTimeView = QtWidgets.QLabel(Form)
+        self.averageTimeView.setStyleSheet("position: absolute;\n"
+                                           "background: #D9D9D9;"
+                                           "font-family: \'Inter\';\n"
+                                           "font-style: normal;\n"
+                                           "font-weight: 400;\n"
+                                           "font-size: 32px;\n"
+                                           "line-height: 39px;\n"
+                                           "display: flex;\n"
+                                           "align-items: center;\n"
+                                           "text-align: center;\n"
+                                           "\n"
+                                           "color: #000000;")
+        self.averageTimeView.setAlignment(QtCore.Qt.AlignCenter)
+        self.averageTimeView.setGeometry(QtCore.QRect((1920 - 600) // 2, 600, 600, 71))
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
 

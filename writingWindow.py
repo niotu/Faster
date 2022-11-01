@@ -6,7 +6,7 @@ from PyQt5.QtGui import QIcon, QPixmap, QMovie
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
 from PyQt5.QtWidgets import QMainWindow, QGraphicsOpacityEffect, QMessageBox
 
-from dist.CONSTANTS import corr_style, incorr_style, good_words, textStyle, lineEditStyle, encoding
+from dist.CONSTANTS import corr_style, incorr_style, good_words, textStyle, lineEditStyle, encoding, buttonStyle
 from dist.writingWindow_UI import WritingWindow
 
 
@@ -118,12 +118,23 @@ class WritingSession(QMainWindow, WritingWindow):
     def win(self):
         self.stop(button=None)
         self.is_completed = True
-        self.export_to_db(self.filename, len(self.lines), self.format_time(self.secs), self.is_completed)
         self.current_line_num = 0
+
         msgbox = QMessageBox(self)
         msgbox.setText(good_words[randint(0, len(good_words) - 1)])
         msgbox.setStyleSheet(textStyle)
         msgbox.setGeometry(QRect(810, 490, 300, 100))
+        msgbox.setStandardButtons(QMessageBox.No | QMessageBox.Yes)
+        buttonY = msgbox.button(QMessageBox.Yes)
+        buttonY.setText("Сохранить результат")
+        buttonY.clicked.connect(lambda: self.export_to_db(self.secs, self.is_completed))
+        buttonY.setStyleSheet(buttonStyle)
+
+        buttonN = msgbox.button(QMessageBox.No)
+        buttonN.setText("Начать заново")
+        buttonN.clicked.connect(lambda: self.load(self.filename))
+        buttonN.setStyleSheet(buttonStyle)
+
         msgbox.setWindowTitle('Урааа')
         msgbox.show()
 
@@ -193,5 +204,7 @@ class WritingSession(QMainWindow, WritingWindow):
         self.animation.setEndValue(0)
         self.animation.start()
 
-    def export_to_db(self, name, strings, time, is_completed):
-        return name, strings, time, is_completed
+    def export_to_db(self, time, is_completed):
+        if is_completed:
+            with open('data/times.txt', 'a') as f:
+                f.write(str(time))

@@ -7,3 +7,6 @@ with open('data/account.json', 'w') as account:
 
 with open('data/settings.json', 'w') as settings:
     json.dump(default_settings, settings)
+
+with open('data/times.txt', 'w') as times:
+    times.write('')

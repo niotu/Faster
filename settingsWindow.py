@@ -16,6 +16,7 @@ class SettingsPage(QMainWindow, SettingsWindow):
         self.is_dark_theme = None
         self.is_letter_ignore = None
         self.settings = {}
+        self.average_time = 0
 
         self.setupUi(self)
         self.load_settings()
@@ -54,6 +55,10 @@ class SettingsPage(QMainWindow, SettingsWindow):
         self.is_dark_theme = settings['darkTheme']
         self.is_letter_ignore = settings['letterIgnore']
 
+        self.average_time = self.load_time()
+        self.averageTimeView.setText('Среднее время выполнения: ' + self.average_time)
+
+
         self.settings = settings
 
         if self.is_dark_theme:
@@ -66,3 +71,16 @@ class SettingsPage(QMainWindow, SettingsWindow):
     def write_settings(self, settings):
         with open('data/settings.json', 'w') as fileobject:
             json.dump(settings, fileobject)
+
+    def load_time(self):
+        with open('data/times.txt', 'r') as f:
+            times = f.readlines()
+        times = list(map(int, times))
+        return self.format_time(sum(times) // len(times) if len(times) > 0 else 0)
+
+    def format_time(self, time):
+        time = time // 10
+        minutes = time // 6000
+        seconds = (time - minutes * 6000) // 100
+        mscesonds = time - seconds * 100 - minutes * 6000
+        return f'{minutes}:{seconds}:{mscesonds}'
