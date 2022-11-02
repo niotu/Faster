@@ -3,9 +3,9 @@ import sqlite3
 
 from PyQt5 import QtGui
 from PyQt5.QtGui import QPixmap, QIcon
-from PyQt5.QtWidgets import QMainWindow, QFileDialog
+from PyQt5.QtWidgets import QFileDialog, QMainWindow
 
-from const.CONSTANTS import ENCODING, settingsWindow_styles
+from const.CONSTANTS import ENCODING, settingsWindow_styles, dark_settingsWindow_styles
 from const.settingsWindow_UI import SettingsWindow
 
 
@@ -14,6 +14,7 @@ class SettingsPage(QMainWindow, SettingsWindow):
         super(SettingsPage, self).__init__()
         self.previousWindow = None
         self.pix = QPixmap('icons/arrow.png')
+        self.dpix = QPixmap('icons/dark-arrow.png')
 
         self.is_dark_theme = None
         self.is_letter_ignore = None
@@ -35,9 +36,15 @@ class SettingsPage(QMainWindow, SettingsWindow):
     def set_dark_theme(self):
         if self.darkTheme.isChecked():
             self.darkTheme.setIcon(QIcon('icons/toggle_on.png'))
+            self.setStyleSheet(dark_settingsWindow_styles)
+            self.quit.setPixmap(self.dpix)
+
             self.is_dark_theme = True
         else:
+            self.setStyleSheet(settingsWindow_styles)
             self.darkTheme.setIcon(QtGui.QIcon('icons/toggle_off.png'))
+            self.quit.setPixmap(self.pix)
+
             self.is_dark_theme = False
         self.settings = {'darkTheme': self.is_dark_theme, 'letterIgnore': self.is_letter_ignore}
         self.write_settings(self.settings)
@@ -53,8 +60,6 @@ class SettingsPage(QMainWindow, SettingsWindow):
         self.write_settings(self.settings)
 
     def load_settings(self):
-        self.setStyleSheet(settingsWindow_styles)
-
         with open('data/settings.json', 'r') as fileobject:
             settings = json.load(fileobject)
         self.is_dark_theme = settings['darkTheme']

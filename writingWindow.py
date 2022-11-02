@@ -5,9 +5,9 @@ from PyQt5 import QtCore
 from PyQt5.QtCore import QTimer, QUrl, Qt, QRect
 from PyQt5.QtGui import QIcon, QPixmap, QMovie
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
-from PyQt5.QtWidgets import QMainWindow, QGraphicsOpacityEffect, QMessageBox
+from PyQt5.QtWidgets import QGraphicsOpacityEffect, QMessageBox, QWidget, QMainWindow
 
-from const.CONSTANTS import writingWindow_styles
+from const.CONSTANTS import writingWindow_styles, corr_style, lineEditStyle, GOOD_WORDS, incorr_style
 from const.writingWindow_UI import WritingWindow
 
 
@@ -55,7 +55,6 @@ class WritingSession(QMainWindow, WritingWindow):
         self.is_letter_ignore = param
 
     def load(self, id):
-        self.setStyleSheet(writingWindow_styles)
 
         self.id = id
         self.secs = 0
@@ -132,18 +131,18 @@ class WritingSession(QMainWindow, WritingWindow):
 
         msgbox = QMessageBox(self)
         msgbox.setText(GOOD_WORDS[randint(0, len(GOOD_WORDS) - 1)])
-        msgbox.setStyleSheet(textStyle)
+        msgbox.setStyleSheet(writingWindow_styles)
         msgbox.setGeometry(QRect(810, 490, 300, 100))
         msgbox.setStandardButtons(QMessageBox.No | QMessageBox.Yes)
         buttonY = msgbox.button(QMessageBox.Yes)
         buttonY.setText("Сохранить результат")
         buttonY.clicked.connect(lambda: self.export_to_db(self.secs, self.is_completed))
-        buttonY.setStyleSheet(buttonStyle)
+        buttonY.setStyleSheet(writingWindow_styles)
 
         buttonN = msgbox.button(QMessageBox.No)
         buttonN.setText("Начать заново")
         buttonN.clicked.connect(lambda: self.load(self.filename))
-        buttonN.setStyleSheet(buttonStyle)
+        buttonN.setStyleSheet(writingWindow_styles)
 
         msgbox.setWindowTitle('Урааа')
         msgbox.show()
@@ -157,7 +156,7 @@ class WritingSession(QMainWindow, WritingWindow):
             sound_player.play()
 
             self.mainLine.setStyleSheet(corr_style)
-            QTimer(self).singleShot(500, lambda: self.mainLine.setStyleSheet(lineEditStyle))
+            QTimer(self).singleShot(500, lambda: self.setStyleSheet(writingWindow_styles))
 
         else:
             sound_player = QMediaPlayer()
@@ -167,7 +166,7 @@ class WritingSession(QMainWindow, WritingWindow):
             sound_player.play()
 
             self.mainLine.setStyleSheet(incorr_style)
-            QTimer(self).singleShot(500, lambda: self.mainLine.setStyleSheet(lineEditStyle))
+            QTimer(self).singleShot(500, lambda: self.setStyleSheet(writingWindow_styles))
 
     def format_time(self, time):
         time = time // 10

@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtWidgets
 class WritingWindow(QtWidgets.QWidget):
     def setupUi(self, QWidget):
         x, y = 1920, 1080
-        QWidget.setObjectName("MainWindow")
+        QWidget.setObjectName("Form")
         QWidget.resize(x, y)
         QWidget.setStyleSheet("background: #FFFFFF")
         self.centralwidget = QtWidgets.QWidget(QWidget)

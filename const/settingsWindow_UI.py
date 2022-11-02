@@ -56,7 +56,6 @@ class SettingsWindow(object):
         # self.resetFiles.setStyleSheet(item_button_style)
         self.quit = Pic(Form)
         self.quit.setGeometry(QtCore.QRect(460, 40, 80, 75))
-        self.quit.setText('aaaa')
         self.quit.setObjectName("quit")
         self.averageTimeView = QtWidgets.QLabel(Form)
         # self.averageTimeView.setStyleSheet(textStyle)

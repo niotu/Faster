@@ -10,6 +10,7 @@
 
 from PyQt5 import QtCore, QtWidgets
 
+
 class MenuWindow(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")

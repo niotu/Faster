@@ -15,7 +15,7 @@ from const.CONSTANTS import previewWindow_styles
 
 class PreviewWindow(object):
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
+        MainWindow.setObjectName("Form")
         MainWindow.resize(1395, 904)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
