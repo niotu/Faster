@@ -10,7 +10,7 @@ from const.menuWindow_UI import MenuWindow
 class MenuPage(QMainWindow, MenuWindow):
     def __init__(self):
         super(MenuPage, self).__init__()
-        self.selected_train_path = None
+        self.selected_id = None
         self.texts = []
         self.titles = []
 
@@ -21,7 +21,7 @@ class MenuPage(QMainWindow, MenuWindow):
         self.trainsView.itemClicked.connect(self.Clicked)
 
     def load(self):
-        texts = self.load_from_db() # load text list from database
+        texts = self.load_from_db()  # load text list from database
         titles = []
 
         # texts = list(map(str.replace('\\n', '\n'), texts))
@@ -31,7 +31,7 @@ class MenuPage(QMainWindow, MenuWindow):
 
         for text in texts:
             mas = text
-            title = ' '.join(mas.rstrip().split()[:2]).capitalize()
+            title = ' '.join(mas.replace('\\n', '\n').rstrip().split()[:2]).capitalize()
             titles.append(title if title[-1] not in ',./-_;:' else title[:-1])
 
         self.titles = titles
@@ -59,7 +59,7 @@ class MenuPage(QMainWindow, MenuWindow):
 
     def Clicked(self, item):
         train = item.text()
-        self.selected_train_path = 'texts/' + self.texts[self.titles.index(train)]
+        self.selected_id = self.titles.index(train) + 1
 
     def update_texts(self):
-        pass
+        self.load()

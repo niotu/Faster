@@ -57,17 +57,13 @@ class MainWindow(QStackedWidget, Ui_StackedWidget):
             self.setCurrentWidget(self.menuWindow)
 
     def jump_writing_window(self, window):
-        filename = self.menuWindow.selected_train_path
+        id = self.menuWindow.selected_id
         self.writingWindow.set_letter_ignore(self.settingsWindow.is_letter_ignore)
-        self.load_writing_window(filename)
+        self.load_writing_window(id)
         self.setCurrentWidget(window)
 
-    def load_writing_window(self, file):
-        with open(file, 'r', encoding=encoding) as f:
-            mas = f.readlines()
-        with open('data/current_text', 'w', encoding=encoding) as f:
-            f.write(''.join(mas))
-        self.writingWindow.load(self.writingWindow.filename)
+    def load_writing_window(self, id):
+        self.writingWindow.load(id)
 
     def jump_settings_window(self, window):
         self.settingsWindow.load_settings()

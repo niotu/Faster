@@ -1,3 +1,4 @@
+import sqlite3
 from random import randint
 
 from PyQt5 import QtCore
@@ -14,7 +15,7 @@ class WritingSession(QMainWindow, WritingWindow):
     def __init__(self):
         super(WritingSession, self).__init__()
         self.icon = QIcon('icons/logo.png')
-        self.filename = 'data/current_text'
+        self.id = None
         self.lines = []
         self.current_line_num = 0
 
@@ -53,13 +54,14 @@ class WritingSession(QMainWindow, WritingWindow):
     def set_letter_ignore(self, param):
         self.is_letter_ignore = param
 
-    def load(self, filename):
+    def load(self, id):
+        self.id = id
         self.secs = 0
         self.mainLine.setEnabled(False)
         self.showData.setPixmap(self.lockedPix)
-        with open(filename, 'r', encoding=encoding) as f:
-            file = f.readlines()
-        self.lines = file
+
+        self.lines = self.load_text(self.id)  # load lines from database using 'SELECT'
+
         self.timerView.setText('0:00:00')
         text1 = ''
         text2 = ''.join(self.lines[self.current_line_num])
@@ -70,6 +72,12 @@ class WritingSession(QMainWindow, WritingWindow):
         self.previousLineView.setText(text1)
         self.currentLineView.setText(text2)
         self.nextLineView.setText(text3)
+
+    def load_text(self, id):
+        con = sqlite3.connect("data/data.db")
+        cur = con.cursor()
+        result = cur.execute(f"""SELECT text FROM texts WHERE id={id}""").fetchone()[0].split('\\n')
+        return result
 
     def check_lines(self):
         line = self.mainLine.text()
