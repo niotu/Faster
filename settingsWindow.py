@@ -5,7 +5,7 @@ from PyQt5 import QtGui
 from PyQt5.QtGui import QPixmap, QIcon
 from PyQt5.QtWidgets import QMainWindow, QFileDialog
 
-from const.CONSTANTS import ENCODING
+from const.CONSTANTS import ENCODING, settingsWindow_styles
 from const.settingsWindow_UI import SettingsWindow
 
 
@@ -53,6 +53,8 @@ class SettingsPage(QMainWindow, SettingsWindow):
         self.write_settings(self.settings)
 
     def load_settings(self):
+        self.setStyleSheet(settingsWindow_styles)
+
         with open('data/settings.json', 'r') as fileobject:
             settings = json.load(fileobject)
         self.is_dark_theme = settings['darkTheme']

@@ -7,8 +7,7 @@ from PyQt5.QtGui import QIcon, QPixmap, QMovie
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
 from PyQt5.QtWidgets import QMainWindow, QGraphicsOpacityEffect, QMessageBox
 
-from const.CONSTANTS import corr_style, incorr_style, GOOD_WORDS, textStyle, lineEditStyle, buttonStyle, \
-    writingWindow_styles
+from const.CONSTANTS import writingWindow_styles
 from const.writingWindow_UI import WritingWindow
 
 

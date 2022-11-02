@@ -10,7 +10,7 @@
 
 from PyQt5 import QtCore, QtWidgets
 
-from const.CONSTANTS import empty_label_style, buttonStyle2, previewWindow_styles
+from const.CONSTANTS import previewWindow_styles
 
 
 class PreviewWindow(object):
@@ -29,7 +29,6 @@ class PreviewWindow(object):
         self.bgLabel.setObjectName("bgLabel")
         self.goNext = QtWidgets.QPushButton(self.centralwidget)
         self.goNext.setGeometry(QtCore.QRect(779, 877, 352, 70))
-        # self.goNext.setStyleSheet(buttonStyle2)
         self.goNext.setObjectName("goNext")
         self.bgLabel.raise_()
         self.welcome_label.raise_()
