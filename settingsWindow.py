@@ -1,9 +1,11 @@
 import json
+import sqlite3
 
 from PyQt5 import QtGui
 from PyQt5.QtGui import QPixmap, QIcon
-from PyQt5.QtWidgets import QMainWindow
+from PyQt5.QtWidgets import QMainWindow, QFileDialog
 
+from const.CONSTANTS import encoding
 from const.settingsWindow_UI import SettingsWindow
 
 
@@ -25,6 +27,7 @@ class SettingsPage(QMainWindow, SettingsWindow):
 
         self.darkTheme.clicked.connect(self.set_dark_theme)
         self.letterIgnore.clicked.connect(self.set_letter_ignore)
+        self.addFiles.clicked.connect(self.add_new_file)
 
     def setPreviousWindow(self, window):
         self.previousWindow = window
@@ -83,3 +86,21 @@ class SettingsPage(QMainWindow, SettingsWindow):
         seconds = (time - minutes * 6000) // 100
         mscesonds = time - seconds * 100 - minutes * 6000
         return f'{minutes}:{seconds}:{mscesonds}'
+
+    def add_new_file(self):
+        filename = QFileDialog.getOpenFileName(self, 'Choose file', '', 'Text files(*.txt)')[0]
+        if filename != '':
+            with open(filename, 'r', encoding=encoding) as f:
+                text = f.read()
+            self.load_file_to_db(text)
+
+    def load_file_to_db(self, text):
+        con = sqlite3.connect("data/data.db")
+        cur = con.cursor()
+        num = cur.execute(f"""SELECT id FROM texts """).fetchall()
+        num = num[-1][0] + 1
+        res = (num, text)
+        cur.execute(
+            f"""INSERT INTO texts ( id, text ) VALUES {res};""")
+        cur.execute("""COMMIT TRANSACTION;""")
+        con.close()

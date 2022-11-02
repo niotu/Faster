@@ -24,7 +24,6 @@ class MenuPage(QMainWindow, MenuWindow):
         texts = self.load_from_db()  # load text list from database
         titles = []
 
-        # texts = list(map(str.replace('\\n', '\n'), texts))
         self.texts = texts
 
         '''generate titles'''
@@ -38,7 +37,7 @@ class MenuPage(QMainWindow, MenuWindow):
 
         '''put titles on listWidget'''
 
-        for i, title in enumerate(titles):
+        for i, title in enumerate(titles):  # put titles on items
             item = QListWidgetItem()
             item.setTextAlignment(QtCore.Qt.AlignCenter)
             font = QtGui.QFont('Inter')

@@ -34,13 +34,14 @@ class MainWindow(QStackedWidget, Ui_StackedWidget):
         self.addWidget(self.settingsWindow)
 
         self.loginPage.createAccount.clicked.connect(lambda: self.jump_login_window(self.previewWindow))
-        self.previewWindow.goNext.clicked.connect(lambda: self.jump_menu_window(self.menuWindow))
+        self.previewWindow.goNext.clicked.connect(self.jump_menu_window)
         self.menuWindow.trainsView.itemDoubleClicked.connect(lambda: self.jump_writing_window(self.writingWindow))
         self.menuWindow.settingsButton.clicked.connect(lambda: self.jump_settings_window(self.menuWindow))
-        self.writingWindow.menuButton.clicked.connect(lambda: self.jump_menu_window(self.menuWindow))
+        self.writingWindow.menuButton.clicked.connect(self.jump_menu_window)
         self.writingWindow.settingsButton.clicked.connect(lambda: self.jump_settings_window(self.writingWindow))
         self.settingsWindow.quit.click.connect(lambda: self.jump_from_settings_window())
         self.settingsWindow.signOut.clicked.connect(self.sign_out)
+        self.settingsWindow.resetFiles.clicked.connect(self.menuWindow.load)
 
         self.load()
 
@@ -52,8 +53,9 @@ class MainWindow(QStackedWidget, Ui_StackedWidget):
         else:
             self.loginPage.incorr_reqs()
 
-    def jump_menu_window(self, window):
+    def jump_menu_window(self):
         if not self.writingWindow.is_running:
+            self.menuWindow.load()
             self.setCurrentWidget(self.menuWindow)
 
     def jump_writing_window(self, window):
