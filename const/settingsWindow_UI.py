@@ -11,6 +11,8 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import pyqtSignal
 
+from const.CONSTANTS import textStyle, active_qlabel_style, signOutButtonStyle, bg_wall_style, item_button_style
+
 
 class SettingsWindow(object):
     def setupUi(self, Form):
@@ -18,52 +20,12 @@ class SettingsWindow(object):
         Form.resize(1392, 905)
         self.label = QtWidgets.QLabel(Form)
         self.label.setGeometry(QtCore.QRect(340, 0, 1200, 1020))
-        self.label.setStyleSheet("position: absolute;\n"
-                                 "background: #D9D9D9;"
-                                 "padding-bottom: 880px;\n"
-                                 "font-family: \'Inter\';\n"
-                                 "font-style: normal;\n"
-                                 "font-weight: 400;\n"
-                                 "font-size: 32px;\n"
-                                 "line-height: 39px;\n"
-                                 "display: flex;\n"
-                                 "align-items: center;\n"
-                                 "text-align: center;\n"
-                                 "\n"
-                                 "color: #000000;")
+        self.label.setStyleSheet(bg_wall_style + 'padding-bottom: 880px;')
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(Form)
         self.label_2.setGeometry(QtCore.QRect(460, 150, 1000, 70))
-        self.label_2.setStyleSheet("QLabel {"
-                                   "position: absolute;\n"
-                                   "background: #9E9E9E;\n"
-                                   "border-radius: 25px;\n"
-                                   "padding-left: 40px;\n"
-                                   "font-family: \'Inter\';\n"
-                                   "font-style: normal;\n"
-                                   "font-weight: 400;\n"
-                                   "font-size: 32px;\n"
-                                   "line-height: 39px;\n"
-                                   "display: flex;\n"
-                                   "align-items: center;\n"
-                                   "text-align: center;\n"
-                                   "color: #000000;"
-                                   "}"
-                                   "QLabel:hover{"
-                                   "position: absolute;\n"
-                                   "background: #696969;\n"
-                                   "border-radius: 25px;\n"
-                                   "padding-left: 40px;\n"
-                                   "font-family: \'Inter\';\n"
-                                   "font-style: normal;\n"
-                                   "font-weight: 400;\n"
-                                   "font-size: 32px;\n"
-                                   "line-height: 39px;\n"
-                                   "display: flex;\n"
-                                   "align-items: center;\n"
-                                   "text-align: center;\n"
-                                   "color: #000000;}")
+        self.label_2.setStyleSheet(active_qlabel_style)
         self.label_2.setObjectName("label_2")
         self.darkTheme = QtWidgets.QPushButton(Form)
         self.darkTheme.setGeometry(QtCore.QRect(1260, 170, 60, 30))
@@ -73,35 +35,7 @@ class SettingsWindow(object):
         self.label_2.setToolTip('В разработке...')
         self.label_3 = QtWidgets.QLabel(Form)
         self.label_3.setGeometry(QtCore.QRect(460, 250, 1000, 70))
-        self.label_3.setStyleSheet("QLabel {"
-                                   "position: absolute;\n"
-                                   "background: #9E9E9E;\n"
-                                   "border-radius: 25px;\n"
-                                   "padding-left: 40px;\n"
-                                   "font-family: \'Inter\';\n"
-                                   "font-style: normal;\n"
-                                   "font-weight: 400;\n"
-                                   "font-size: 32px;\n"
-                                   "line-height: 39px;\n"
-                                   "display: flex;\n"
-                                   "align-items: center;\n"
-                                   "text-align: center;\n"
-                                   "color: #000000;"
-                                   "}"
-                                   "QLabel:hover{"
-                                   "position: absolute;\n"
-                                   "background: #696969;\n"
-                                   "border-radius: 25px;\n"
-                                   "padding-left: 40px;\n"
-                                   "font-family: \'Inter\';\n"
-                                   "font-style: normal;\n"
-                                   "font-weight: 400;\n"
-                                   "font-size: 32px;\n"
-                                   "line-height: 39px;\n"
-                                   "display: flex;\n"
-                                   "align-items: center;\n"
-                                   "text-align: center;\n"
-                                   "color: #000000;}")
+        self.label_3.setStyleSheet(active_qlabel_style)
         self.label_3.setObjectName("label_3")
         self.letterIgnore = QtWidgets.QPushButton(Form)
         self.letterIgnore.setGeometry(QtCore.QRect(1260, 270, 60, 30))
@@ -110,122 +44,24 @@ class SettingsWindow(object):
         self.letterIgnore.setIconSize(QtCore.QSize(60, 30))
         self.signOut = QtWidgets.QPushButton(Form)
         self.signOut.setGeometry(QtCore.QRect(778, 900, 364, 71))
-        self.signOut.setStyleSheet("QPushButton {\n"
-                                   "position: absolute;\n"
-                                   "background: #FFFFFF;\n"
-                                   "border-radius: 25px;\n"
-                                   "font-family: \'Inter\';\n"
-                                   "font-style: normal;\n"
-                                   "font-weight: 400;\n"
-                                   "font-size: 32px;\n"
-                                   "line-height: 39px;\n"
-                                   "display: flex;\n"
-                                   "align-items: center;\n"
-                                   "text-align: center;\n"
-                                   "color: #FF0000;\n"
-                                   "}\n"
-                                   "QPushButton:hover{\n"
-                                   "position: absolute;\n"
-                                   "background: #FFFFFF;\n"
-                                   "border: 2px ridge #FF0000;\n"
-                                   "border-radius: 25px;\n"
-                                   "font-family: \'Inter\';\n"
-                                   "font-style: normal;\n"
-                                   "font-weight: 400;\n"
-                                   "font-size: 32px;\n"
-                                   "line-height: 39px;\n"
-                                   "display: flex;\n"
-                                   "align-items: center;\n"
-                                   "text-align: center;\n"
-                                   "color: #FF0000;\n"
-                                   "}\n"
-                                   "")
+        self.signOut.setStyleSheet(signOutButtonStyle)
         self.signOut.setObjectName("signOut")
         self.addFiles = QtWidgets.QPushButton(Form)
         self.addFiles.setGeometry(QtCore.QRect(460, 350, 1000, 70))
-        self.addFiles.setStyleSheet("QPushButton {"
-                                    "position: absolute;\n"
-                                    "background: #9E9E9E;\n"
-                                    "border-radius: 25px;\n"
-                                    "padding-right: 660px;\n"
-                                    "font-family: \'Inter\';\n"
-                                    "font-style: normal;\n"
-                                    "font-weight: 400;\n"
-                                    "font-size: 32px;\n"
-                                    "line-height: 39px;\n"
-                                    "display: flex;\n"
-                                    "align-items: center;\n"
-                                    "text-align: center;\n"
-                                    "color: #000000;"
-                                    "}"
-                                    "QPushButton:hover {"
-                                    "position: absolute;\n"
-                                    "background: #696969;\n"
-                                    "border-radius: 25px;\n"
-                                    "padding-right: 660px;\n"
-                                    "font-family: \'Inter\';\n"
-                                    "font-style: normal;\n"
-                                    "font-weight: 400;\n"
-                                    "font-size: 32px;\n"
-                                    "line-height: 39px;\n"
-                                    "display: flex;\n"
-                                    "align-items: center;\n"
-                                    "text-align: center;\n"
-                                    "color: #000000;"
-                                    "}")
+        self.addFiles.setStyleSheet(item_button_style)
         self.addFiles.setCheckable(False)
         self.addFiles.setFlat(False)
         self.addFiles.setObjectName("addFiles")
         self.addFiles.setToolTip('В разработке...')
         self.resetFiles = QtWidgets.QPushButton(Form)
         self.resetFiles.setGeometry(QtCore.QRect(460, 450, 1000, 70))
-        self.resetFiles.setStyleSheet("QPushButton {"
-                                      "position: absolute;\n"
-                                      "background: #9E9E9E;\n"
-                                      "border-radius: 25px;\n"
-                                      "padding-right: 590px;\n"
-                                      "font-family: \'Inter\';\n"
-                                      "font-style: normal;\n"
-                                      "font-weight: 400;\n"
-                                      "font-size: 32px;\n"
-                                      "line-height: 39px;\n"
-                                      "display: flex;\n"
-                                      "align-items: center;\n"
-                                      "text-align: center;\n"
-                                      "color: #000000;"
-                                      "}"
-                                      "QPushButton:hover {"
-                                      "position: absolute;\n"
-                                      "background: #696969;\n"
-                                      "border-radius: 25px;\n"
-                                      "padding-right: 590px;\n"
-                                      "font-family: \'Inter\';\n"
-                                      "font-style: normal;\n"
-                                      "font-weight: 400;\n"
-                                      "font-size: 32px;\n"
-                                      "line-height: 39px;\n"
-                                      "display: flex;\n"
-                                      "align-items: center;\n"
-                                      "text-align: center;\n"
-                                      "color: #000000;"
-                                      "}")
+        self.resetFiles.setStyleSheet(item_button_style)
         self.quit = Pic(Form)
         self.quit.setGeometry(QtCore.QRect(460, 40, 80, 75))
         self.quit.setText('aaaa')
 
         self.averageTimeView = QtWidgets.QLabel(Form)
-        self.averageTimeView.setStyleSheet("position: absolute;\n"
-                                           "background: #D9D9D9;"
-                                           "font-family: \'Inter\';\n"
-                                           "font-style: normal;\n"
-                                           "font-weight: 400;\n"
-                                           "font-size: 32px;\n"
-                                           "line-height: 39px;\n"
-                                           "display: flex;\n"
-                                           "align-items: center;\n"
-                                           "text-align: center;\n"
-                                           "\n"
-                                           "color: #000000;")
+        self.averageTimeView.setStyleSheet(textStyle)
         self.averageTimeView.setAlignment(QtCore.Qt.AlignCenter)
         self.averageTimeView.setGeometry(QtCore.QRect((1920 - 600) // 2, 600, 600, 71))
         self.retranslateUi(Form)

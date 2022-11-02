@@ -10,6 +10,8 @@
 
 from PyQt5 import QtCore, QtWidgets
 
+from const.CONSTANTS import empty_label_style, buttonStyle2, previewWindow_styles
+
 
 class PreviewWindow(object):
     def setupUi(self, MainWindow):
@@ -19,65 +21,15 @@ class PreviewWindow(object):
         self.centralwidget.setObjectName("centralwidget")
         self.welcome_label = QtWidgets.QLabel(self.centralwidget)
         self.welcome_label.setGeometry(QtCore.QRect(456, 132, 1007, 168))
-        self.welcome_label.setStyleSheet(
-            "position: absolute; background: #D9D9D9; border-radius: 25px; font-family: \'Inter\';\n"
-            "font-style: normal;\n"
-            "font-weight: 400;\n"
-            "font-size: 32px;\n"
-            "line-height: 39px;\n"
-            "display: flex;\n"
-            "align-items: center;\n"
-            "text-align: center;\n"
-            "\n"
-            "color: #000000;")
         self.welcome_label.setAlignment(QtCore.Qt.AlignCenter)
         self.welcome_label.setObjectName("welcome_label")
         self.bgLabel = QtWidgets.QLabel(self.centralwidget)
         self.bgLabel.setGeometry(QtCore.QRect(456, 331, 1007, 515))
-        self.bgLabel.setStyleSheet(
-            "position: absolute; background: #D9D9D9; border-radius: 25px; font-family: \'Inter\';\n"
-            "font-style: normal;\n"
-            "font-weight: 400;\n"
-            "font-size: 32px;\n"
-            "line-height: 39px;\n"
-            "display: flex;\n"
-            "align-items: center;\n"
-            "text-align: center;\n"
-            "\n"
-            "color: #000000;")
         self.bgLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.bgLabel.setObjectName("bgLabel")
         self.goNext = QtWidgets.QPushButton(self.centralwidget)
         self.goNext.setGeometry(QtCore.QRect(779, 877, 352, 70))
-        self.goNext.setStyleSheet("QPushButton{"
-                                  "position: absolute;\n"
-                                  "background: #9E9E9E;\n"
-                                  "border-radius: 15px;\n"
-                                  "font-family: \'Inter\';\n"
-                                  "font-style: normal;\n"
-                                  "font-weight: 400;\n"
-                                  "font-size: 32px;\n"
-                                  "line-height: 39px;\n"
-                                  "display: flex;\n"
-                                  "align-items: center;\n"
-                                  "text-align: center;\n"
-                                  "color: #000000;\n"
-                                  "}"
-                                  "QPushButton:hover{"
-                                  "position: absolute;\n"
-                                  "background: #686868;\n"
-                                  "border-radius: 15px;\n"
-                                  "font-family: \'Inter\';\n"
-                                  "font-style: normal;\n"
-                                  "font-weight: 400;\n"
-                                  "font-size: 32px;\n"
-                                  "line-height: 39px;\n"
-                                  "display: flex;\n"
-                                  "align-items: center;\n"
-                                  "text-align: center;\n"
-                                  "color: #000000;\n"
-                                  "}"
-                                  )
+        # self.goNext.setStyleSheet(buttonStyle2)
         self.goNext.setObjectName("goNext")
         self.bgLabel.raise_()
         self.welcome_label.raise_()

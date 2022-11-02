@@ -2,7 +2,7 @@ import json
 
 from PyQt5.QtWidgets import QStackedWidget
 
-from const.CONSTANTS import encoding, default_settings, default_account
+from const.CONSTANTS import default_settings, default_account
 from const.main_UI import Ui_StackedWidget
 from loginWindow import LoginPage
 from menuWindow import MenuPage
@@ -50,8 +50,6 @@ class MainWindow(QStackedWidget, Ui_StackedWidget):
             self.load()
             self.previewWindow.load(self.name)
             self.setCurrentWidget(window)
-        else:
-            self.loginPage.incorr_reqs()
 
     def jump_menu_window(self):
         if not self.writingWindow.is_running:
@@ -73,9 +71,15 @@ class MainWindow(QStackedWidget, Ui_StackedWidget):
         self.setCurrentWidget(self.settingsWindow)
 
     def jump_from_settings_window(self):
+        # self.set_theme(self.settingsWindow.is_dark_theme)
         self.setCurrentWidget(self.settingsWindow.previousWindow)
 
     def load(self):
+        with open('data/settings.json', 'r') as settings:
+            settings = json.load(settings)
+        is_dark_theme = settings['darkTheme']
+        # self.set_theme(is_dark_theme=is_dark_theme)
+
         with open('data/account.json', 'r') as account_data:
             self.account = json.load(account_data)
         self.is_logined = self.account['is_logined']
@@ -83,6 +87,9 @@ class MainWindow(QStackedWidget, Ui_StackedWidget):
         if self.is_logined:
             self.previewWindow.load(self.name)
             self.setCurrentWidget(self.previewWindow)
+        else:
+            self.loginPage.load()
+            self.setCurrentWidget(self.loginPage)
 
     def sign_out(self):
         with open('data/account.json', 'w') as account:
@@ -103,3 +110,10 @@ class MainWindow(QStackedWidget, Ui_StackedWidget):
         self.menuWindow.load()
         self.loginPage.reset()
         self.setCurrentWidget(self.loginPage)
+    #
+    # def set_theme(self, is_dark_theme):
+    #     if is_dark_theme:
+    #         self.menuWindow.setStyleSheet(dark_background)
+    #         self.previewWindow.setStyleSheet(dark_background)
+    #         self.writingWindow.setStyleSheet(dark_background)
+    #         # self.

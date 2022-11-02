@@ -1,8 +1,7 @@
 import json
 import sqlite3
 
-
-from const.CONSTANTS import default_account, default_settings, encoding
+from const.CONSTANTS import default_account, default_settings, ENCODING
 
 with open('data/account.json', 'w') as account:
     json.dump(default_account, account)
@@ -16,7 +15,7 @@ with open('data/times.txt', 'w') as times:
 con = sqlite3.connect("data/data.db")
 cur = con.cursor()
 
-with open('create_db.sql', 'r', encoding=encoding) as sql_file:
+with open('create_db.sql', 'r', encoding=ENCODING) as sql_file:
     sql = sql_file.read()
 result = cur.executescript(sql)
 con.close()

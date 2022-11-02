@@ -7,7 +7,8 @@ from PyQt5.QtGui import QIcon, QPixmap, QMovie
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
 from PyQt5.QtWidgets import QMainWindow, QGraphicsOpacityEffect, QMessageBox
 
-from const.CONSTANTS import corr_style, incorr_style, good_words, textStyle, lineEditStyle, buttonStyle
+from const.CONSTANTS import corr_style, incorr_style, GOOD_WORDS, textStyle, lineEditStyle, buttonStyle, \
+    writingWindow_styles
 from const.writingWindow_UI import WritingWindow
 
 
@@ -55,6 +56,8 @@ class WritingSession(QMainWindow, WritingWindow):
         self.is_letter_ignore = param
 
     def load(self, id):
+        self.setStyleSheet(writingWindow_styles)
+
         self.id = id
         self.secs = 0
         self.mainLine.setEnabled(False)
@@ -129,7 +132,7 @@ class WritingSession(QMainWindow, WritingWindow):
         self.current_line_num = 0
 
         msgbox = QMessageBox(self)
-        msgbox.setText(good_words[randint(0, len(good_words) - 1)])
+        msgbox.setText(GOOD_WORDS[randint(0, len(GOOD_WORDS) - 1)])
         msgbox.setStyleSheet(textStyle)
         msgbox.setGeometry(QRect(810, 490, 300, 100))
         msgbox.setStandardButtons(QMessageBox.No | QMessageBox.Yes)
@@ -168,10 +171,12 @@ class WritingSession(QMainWindow, WritingWindow):
             QTimer(self).singleShot(500, lambda: self.mainLine.setStyleSheet(lineEditStyle))
 
     def format_time(self, time):
+        time = time // 10
         minutes = time // 6000
         seconds = (time - minutes * 6000) // 100
-        mscesonds = time - seconds * 100 - minutes * 6000
-        return f'{minutes}:{seconds}:{mscesonds}'
+        mseconds = time - seconds * 100 - minutes * 6000
+        minutes, seconds, mseconds = str(minutes), str(seconds), str(mseconds)
+        return f'{minutes}:{seconds if len(seconds) > 1 else "0" + seconds}:{mseconds if len(mseconds) > 1 else "0" + mseconds}'
 
     def showTime(self):
         # checking if flag is true
@@ -182,7 +187,7 @@ class WritingSession(QMainWindow, WritingWindow):
         self.check_animation()
 
         # getting text from count
-        text = str(self.format_time(self.secs // 10))
+        text = str(self.format_time(self.secs))
 
         self.timerView.setText(text)
 

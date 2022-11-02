@@ -3,7 +3,7 @@ import sqlite3
 from PyQt5 import QtCore, QtGui
 from PyQt5.QtWidgets import QMainWindow, QListWidgetItem
 
-from const.CONSTANTS import encoding
+from const.CONSTANTS import menuWindow_styles
 from const.menuWindow_UI import MenuWindow
 
 
@@ -21,6 +21,8 @@ class MenuPage(QMainWindow, MenuWindow):
         self.trainsView.itemClicked.connect(self.Clicked)
 
     def load(self):
+        self.setStyleSheet(menuWindow_styles)
+
         texts = self.load_from_db()  # load text list from database
         titles = []
 

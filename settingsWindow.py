@@ -5,7 +5,7 @@ from PyQt5 import QtGui
 from PyQt5.QtGui import QPixmap, QIcon
 from PyQt5.QtWidgets import QMainWindow, QFileDialog
 
-from const.CONSTANTS import encoding
+from const.CONSTANTS import ENCODING
 from const.settingsWindow_UI import SettingsWindow
 
 
@@ -84,13 +84,14 @@ class SettingsPage(QMainWindow, SettingsWindow):
         time = time // 10
         minutes = time // 6000
         seconds = (time - minutes * 6000) // 100
-        mscesonds = time - seconds * 100 - minutes * 6000
-        return f'{minutes}:{seconds}:{mscesonds}'
+        mseconds = time - seconds * 100 - minutes * 6000
+        minutes, seconds, mseconds = str(minutes), str(seconds), str(mseconds)
+        return f'{minutes}:{seconds if len(seconds) > 1 else "0" + seconds}:{mseconds if len(mseconds) > 1 else "0" + mseconds}'
 
     def add_new_file(self):
         filename = QFileDialog.getOpenFileName(self, 'Choose file', '', 'Text files(*.txt)')[0]
         if filename != '':
-            with open(filename, 'r', encoding=encoding) as f:
+            with open(filename, 'r', encoding=ENCODING) as f:
                 text = f.read()
             self.load_file_to_db(text)
 

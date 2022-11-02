@@ -10,11 +10,9 @@ cur = con.cursor()
 # print(f"create : {result}")
 
 
-result = cur.execute(f"""SELECT text FROM texts WHERE id={1}""").fetchone()[0]
-print(result)
-res = []
-# for item in result:
-#     res.append(item[0])
-# print(res)
+result = cur.execute(f"""SELECT * FROM texts """).fetchall()
+
+for item in result:
+    print(item)
 
 con.close()

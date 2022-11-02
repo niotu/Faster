@@ -10,99 +10,34 @@
 
 from PyQt5 import QtCore, QtWidgets
 
+from const.CONSTANTS import loginWindow_styles
+
 
 class LoginWindow(QtWidgets.QWidget):
     def setupUi(self, QWidget):
         QWidget.setObjectName("MainWindow")
         QWidget.resize(1395, 904)
+        self.setStyleSheet(loginWindow_styles)
         self.centralwidget = QtWidgets.QWidget(QWidget)
         self.centralwidget.setObjectName("centralwidget")
         self.welcome_label = QtWidgets.QLabel(self.centralwidget)
         self.welcome_label.setGeometry(QtCore.QRect(456, 163, 1007, 168))
-        self.welcome_label.setStyleSheet(
-            "position: absolute; background: #D9D9D9; border-radius: 25px; font-family: 'Inter';"
-            "font-style: normal;\n"
-            "font-weight: 400;\n"
-            "font-size: 32px;\n"
-            "line-height: 39px;\n"
-            "display: flex;\n"
-            "align-items: center;\n"
-            "text-align: center;\n"
-            "color: #000000;")
         self.welcome_label.setAlignment(QtCore.Qt.AlignCenter)
         self.welcome_label.setObjectName("welcome_label")
         self.bgLabel = QtWidgets.QLabel(self.centralwidget)
         self.bgLabel.setGeometry(QtCore.QRect(456, 362, 1007, 515))
-        self.bgLabel.setStyleSheet("position: absolute;\n"
-                                   "background: #D9D9D9;\n"
-                                   "border-radius: 25px;")
         self.bgLabel.setText("")
         self.bgLabel.setObjectName("bgLabel")
         self.nameEdit = QtWidgets.QLineEdit(self.centralwidget)
         self.nameEdit.setGeometry(QtCore.QRect(686, 518, 547, 46))
         self.nameEdit.setObjectName("nameEdit")
-        self.nameEdit.setStyleSheet('position: absolute;'
-                                    'border: 2px solid transparent;'
-                                    'border-bottom: 2px ridge #000000;'
-                                    'background: #D9D9D9;'
-                                    'font-family: "Inter";'
-                                    'font-style: normal;'
-                                    'font-weight: 400;'
-                                    'font-size: 32px;'
-                                    'line-height: 39px;'
-                                    'display: flex;'
-                                    'align-items: center;'
-                                    'text-align: center;'
-                                    'color: #000000;')
         self.nameEdit.setAlignment(QtCore.Qt.AlignCenter)
         self.passwordEdit = QtWidgets.QLineEdit(self.centralwidget)
         self.passwordEdit.setGeometry(QtCore.QRect(686, 640, 546, 47))
         self.passwordEdit.setObjectName("passWordEdit")
-        self.passwordEdit.setStyleSheet('position: absolute;'
-                                        'border: 2px solid transparent;'
-                                        'border-bottom: 2px ridge #000000;'
-                                        'background: #D9D9D9;'
-                                        'font-family: "Inter";'
-                                        'font-style: normal;'
-                                        'font-weight: 400;'
-                                        'font-size: 32px;'
-                                        'line-height: 39px;'
-                                        'display: flex;'
-                                        'align-items: center;'
-                                        'text-align: center;'
-                                        'color: #000000;')
         self.passwordEdit.setAlignment(QtCore.Qt.AlignCenter)
         self.createAccount = QtWidgets.QPushButton(self.centralwidget)
         self.createAccount.setGeometry(QtCore.QRect(765, 765, 389, 68))
-        self.createAccount.setStyleSheet("QPushButton{"
-                                         "position: absolute;\n"
-                                         "background: #9E9E9E;\n"
-                                         "border-radius: 25px;\n"
-                                         "font-family: \'Inter\';\n"
-                                         "font-style: normal;\n"
-                                         "font-weight: 400;\n"
-                                         "font-size: 32px;\n"
-                                         "line-height: 39px;\n"
-                                         "display: flex;\n"
-                                         "align-items: center;\n"
-                                         "text-align: center;\n"
-                                         "color: #000000;\n"
-                                         "}"
-                                         "QPushButton:hover{"
-                                         "position: absolute;\n"
-                                         "background: #686868;\n"
-                                         "border-radius: 25px;\n"
-                                         "font-family: \'Inter\';\n"
-                                         "font-style: normal;\n"
-                                         "font-weight: 400;\n"
-                                         "font-size: 32px;\n"
-                                         "line-height: 39px;\n"
-                                         "display: flex;\n"
-                                         "align-items: center;\n"
-                                         "text-align: center;\n"
-                                         "color: #000000;\n"
-                                         "}"
-                                         )
         self.createAccount.setObjectName("createAccount")
         QWidget.setCentralWidget(self.centralwidget)
 

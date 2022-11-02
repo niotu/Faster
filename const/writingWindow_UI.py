@@ -10,8 +10,6 @@
 
 from PyQt5 import QtCore, QtWidgets
 
-from const.CONSTANTS import buttonStyle, textStyle, startButtonStyle, lineEditStyle, subTextStyle
-
 
 class WritingWindow(QtWidgets.QWidget):
     def setupUi(self, QWidget):
@@ -26,39 +24,34 @@ class WritingWindow(QtWidgets.QWidget):
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHeightForWidth(self.startButton.sizePolicy().hasHeightForWidth())
         self.startButton.setSizePolicy(sizePolicy)
-        self.startButton.setStyleSheet(startButtonStyle)
         self.startButton.setObjectName("startButton")
         self.previousLineView = QtWidgets.QLabel(self.centralwidget)
         self.previousLineView.setGeometry(QtCore.QRect(x // 2 - 1336 // 2, y // 2 - 186 // 2 - 262, 1336, 186 // 3))
         self.previousLineView.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
-        self.previousLineView.setStyleSheet(subTextStyle)
         self.previousLineView.setText('previousLineView')
         self.currentLineView = QtWidgets.QLabel(self.centralwidget)
         self.currentLineView.setGeometry(
             QtCore.QRect(x // 2 - 1336 // 2, y // 2 - 186 // 2 - 262 + 186 // 3, 1336, 186 // 3))
         self.currentLineView.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
-        self.currentLineView.setStyleSheet(textStyle)
+        self.currentLineView.setObjectName('currentLineView')
         self.nextLineView = QtWidgets.QLabel(self.centralwidget)
         self.nextLineView.setGeometry(
             QtCore.QRect(x // 2 - 1336 // 2, y // 2 - 186 // 2 - 262 + 186 // 3 * 2, 1336, 186 // 3))
         self.nextLineView.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
-        self.nextLineView.setStyleSheet(subTextStyle)
         self.nextLineView.setText('nextLineView')
         self.showData = QtWidgets.QLabel(self.centralwidget)
         self.showData.setGeometry(QtCore.QRect(894, 520, 132, 39))
-        self.showData.setObjectName("showCorrect")
+        self.showData.setObjectName("showData")
         self.showData.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
-        self.showData.setStyleSheet(textStyle)
+        # self.showData.setStyleSheet(textStyle)
         self.mainLine = QtWidgets.QLineEdit(self.centralwidget)
         self.mainLine.setGeometry(QtCore.QRect(260, 471, 1400, 40))
         self.mainLine.setObjectName("mainLine")
-        self.mainLine.setStyleSheet(lineEditStyle)
         self.mainLine.setAlignment(QtCore.Qt.AlignCenter)
         self.timerView = QtWidgets.QLabel(self.centralwidget)
         self.timerView.setGeometry(QtCore.QRect(795, 573, 330, 48))
         self.timerView.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
         self.timerView.setObjectName("timerView")
-        self.timerView.setStyleSheet(textStyle)
         self.settingsButton = QtWidgets.QPushButton(self.centralwidget)
         self.settingsButton.setGeometry(QtCore.QRect(1046, 884, 262, 105))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
@@ -66,7 +59,6 @@ class WritingWindow(QtWidgets.QWidget):
         sizePolicy.setVerticalStretch(105)
         sizePolicy.setHeightForWidth(self.settingsButton.sizePolicy().hasHeightForWidth())
         self.settingsButton.setSizePolicy(sizePolicy)
-        self.settingsButton.setStyleSheet(buttonStyle)
         self.settingsButton.setObjectName("settingsButton")
         self.stopButton = QtWidgets.QPushButton(self.centralwidget)
         self.stopButton.setGeometry(QtCore.QRect(1630, 884, 262, 105))
@@ -75,7 +67,6 @@ class WritingWindow(QtWidgets.QWidget):
         sizePolicy.setVerticalStretch(105)
         sizePolicy.setHeightForWidth(self.stopButton.sizePolicy().hasHeightForWidth())
         self.stopButton.setSizePolicy(sizePolicy)
-        self.stopButton.setStyleSheet(buttonStyle)
         self.stopButton.setObjectName("stopButton")
         self.menuButton = QtWidgets.QPushButton(self.centralwidget)
         self.menuButton.setGeometry(QtCore.QRect(1338, 884, 262, 105))
@@ -84,7 +75,6 @@ class WritingWindow(QtWidgets.QWidget):
         sizePolicy.setVerticalStretch(105)
         sizePolicy.setHeightForWidth(self.menuButton.sizePolicy().hasHeightForWidth())
         self.menuButton.setSizePolicy(sizePolicy)
-        self.menuButton.setStyleSheet(buttonStyle)
         self.menuButton.setObjectName("menuButton")
         QWidget.setCentralWidget(self.centralwidget)
 

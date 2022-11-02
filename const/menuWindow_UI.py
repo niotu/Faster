@@ -10,67 +10,12 @@
 
 from PyQt5 import QtCore, QtWidgets
 
-
 class MenuWindow(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.resize(1920, 1080)
         self.trainsView = QtWidgets.QListWidget(Form)
         self.trainsView.setGeometry(QtCore.QRect(1920 // 2 - 600, 0, 1200, 1020))
-        self.trainsView.setStyleSheet("QListWidget {\n"
-                                      "position: absolute;\n"
-                                      "border: None;\n"
-                                      "background: #D9D9D9;\n"
-                                      "padding-left: 69px;\n"
-                                      "padding-right: 69px;\n"
-                                      "padding-top: 130px;\n"
-                                      "}\n"
-                                      "QListWidget:item {"
-                                      "padding-top: 28px;\n"
-                                      "padding-bottom: 28px;\n"
-                                      "background: #696969;\n"
-                                      "border-radius: 25px;\n"
-                                      "font-family: \'Inter\';\n"
-                                      "font-style: normal;\n"
-                                      "font-weight: 400;\n"
-                                      "font-size: 32px;\n"
-                                      "line-height: 39px;\n"
-                                      "display: flex;\n"
-                                      "align-items: center;\n"
-                                      "text-align: center;\n"
-                                      "color: #000000;"
-                                      "}"
-                                      "QListWidget:item:!hover{\n"
-                                      "padding-top: 28px;\n"
-                                      "padding-bottom: 28px;\n"
-                                      "background: #9E9E9E;\n"
-                                      "border-radius: 25px;\n"
-                                      "font-family: \'Inter\';\n"
-                                      "font-style: normal;\n"
-                                      "font-weight: 400;\n"
-                                      "font-size: 32px;\n"
-                                      "line-height: 39px;\n"
-                                      "display: flex;\n"
-                                      "align-items: center;\n"
-                                      "text-align: center;\n"
-                                      "color: #000000;"
-                                      "}"
-                                      "QListWidget:item:selected{\n"
-                                      "padding-top: 28px;\n"
-                                      "padding-bottom: 28px;\n"
-                                      "border: 2px ridge #000000;\n"
-                                      "background: #696969;\n"
-                                      "border-radius: 25px;\n"
-                                      "font-family: \'Inter\';\n"
-                                      "font-style: normal;\n"
-                                      "font-weight: 400;\n"
-                                      "font-size: 32px;\n"
-                                      "line-height: 39px;\n"
-                                      "display: flex;\n"
-                                      "align-items: center;\n"
-                                      "text-align: center;\n"
-                                      "color: #000000;}"
-                                      )
 
         self.trainsView.setVerticalScrollMode(QtWidgets.QAbstractItemView.ScrollPerPixel)
         self.trainsView.verticalScrollBar().hide()
@@ -83,61 +28,11 @@ class MenuWindow(object):
         self.trainsView.setSelectionRectVisible(False)
         self.label = QtWidgets.QLabel(Form)
         self.label.setGeometry(QtCore.QRect(553, 20, 813, 75))
-        self.label.setStyleSheet("position: absolute;\n"
-                                 "font-family: \'Inter\';\n"
-                                 "font-style: normal;\n"
-                                 "font-weight: 400;\n"
-                                 "font-size: 32px;\n"
-                                 "line-height: 39px;\n"
-                                 "display: flex;\n"
-                                 "align-items: center;\n"
-                                 "text-align: center;\n"
-                                 "\n"
-                                 "color: #000000;")
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
         self.settingsButton = QtWidgets.QPushButton(Form)
         self.settingsButton.setGeometry(QtCore.QRect(1609, 901, 255, 81))
-        self.settingsButton.setStyleSheet("QPushButton{\n"
-                                          "              background: #D9D9D9;\n"
-                                          "              border-radius: 25px;\n"
-                                          "              font-family: \"Inter\";\n"
-                                          "              font-style: norma;\n"
-                                          "              font-weight: 400;\n"
-                                          "              font-size: 32px;\n"
-                                          "              line-height: 39px;\n"
-                                          "              display: flex;\n"
-                                          "              align-items: center;\n"
-                                          "              text-align: center;\n"
-                                          "              color: #000000;\n"
-                                          "              }\n"
-                                          "              QPushButton:pressed{\n"
-                                          "              background: #3A3A3A;\n"
-                                          "              border-radius: 25px;\n"
-                                          "              font-family: \"Inter\";\n"
-                                          "              font-style: normal;\n"
-                                          "              font-weight: 400;\n"
-                                          "              font-size: 32px;\n"
-                                          "              line-height: 39px;\n"
-                                          "              display: flex;\n"
-                                          "              align-items: center;\n"
-                                          "              text-align: center;\n"
-                                          "              color: #FFFFFF;\n"
-                                          "              }\n"
-                                          "              QPushButton:hover{\n"
-                                          "              background: #9E9E9E;\n"
-                                          "              border-radius: 25px;\n"
-                                          "              position: absolute;\n"
-                                          "              font-family: \"Inter\";\n"
-                                          "              font-style: normal;\n"
-                                          "              font-weight: 400;\n"
-                                          "              font-size: 32px;\n"
-                                          "              line-height: 39px;\n"
-                                          "              display: flex;\n"
-                                          "              align-items: center;\n"
-                                          "             text-align: center;\n"
-                                          "              color: #000000;\n"
-                                          "              }")
+        # self.settingsButton.setStyleSheet(buttonStyle)
         self.settingsButton.setObjectName("pushButton")
 
         self.retranslateUi(Form)
