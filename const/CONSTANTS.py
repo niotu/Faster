@@ -12,6 +12,20 @@ lineEditStyle = 'position: absolute;' \
                 'text-align: center;' \
                 'color: #000000;'
 
+dark_lineEditStyle = 'position: absolute;' \
+                     'border: 2px solid transparent;' \
+                     'border-bottom: 3px ridge #F3F3F3;' \
+                     'background: transparent;' \
+                     'font-family: "Inter";' \
+                     'font-style: normal;' \
+                     'font-weight: 400;' \
+                     'font-size: 32px;' \
+                     'line-height: 39px;' \
+                     'display: flex;' \
+                     'align-items: center;' \
+                     'text-align: center;' \
+                     'color: #F3F3F3;'
+
 corr_style = 'position: absolute;' \
              'border: 2px solid transparent;' \
              'border-bottom: 2px ridge #52FF00;' \
@@ -24,7 +38,7 @@ corr_style = 'position: absolute;' \
              'display: flex;' \
              'align-items: center;' \
              'text-align: center;' \
-             'color: #000000;'
+             'color: #52FF00;'
 
 incorr_style = 'position: absolute;' \
                'border: 2px solid transparent;' \
@@ -38,7 +52,7 @@ incorr_style = 'position: absolute;' \
                'display: flex;' \
                'align-items: center;' \
                'text-align: center;' \
-               'color: #000000;'
+               'color: #CA0D2F;'
 
 small_line_style = 'position: absolute;' \
                    'border: 2px solid transparent;' \
@@ -942,6 +956,8 @@ dark_settingsWindow_styles = ('QMainWindow#Form{background: #232323;}'
 '''DARK THEME STYLES END'''
 
 maxTime = 3600000
+
+MAXSTRING = 75
 
 GOOD_WORDS = ['Отлично!', 'Очень хорошо!', 'Так держать!']
 

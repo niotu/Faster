@@ -1,18 +1,24 @@
-import sqlite3
+from const.CONSTANTS import MAXSTRING
 
-con = sqlite3.connect("data/data.db")
+print(len('Университет Иннополис приглашает посетить Дни открытых дверей абитуриентов'))
 
-cur = con.cursor()
-
-# with open('create_db.sql', 'r', encoding='utf-8') as sql_file:
-#     sql = sql_file.read()
-# result = cur.executescript(sql)
-# print(f"create : {result}")
+text = 'За свою карьеру я пропустил более 9000 бросков, проиграл почти 300 игр. 26 раз мне доверяли сделать финальный победный бросок, и я промахивался. Я терпел поражения снова, и снова, и снова. И именно поэтому я добился успеха.'
 
 
-result = cur.execute(f"""SELECT * FROM texts """).fetchall()
+def format_text(text):
+    lines = []
+    line = []
+    text = text.split()
+    for word in text:
+        # print([lambda a: len(a) for a in text])
+        if len(' '.join(line)) < MAXSTRING:
+            line.append(word)
+        else:
+            incorrect = line.pop()
+            lines.append(' '.join(line))
+            line = [incorrect, word]
+    lines.append(' '.join(line))
+    return lines
 
-for item in result:
-    print(item)
 
-con.close()
+print(format_text(text))

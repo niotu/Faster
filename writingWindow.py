@@ -5,9 +5,10 @@ from PyQt5 import QtCore
 from PyQt5.QtCore import QTimer, QUrl, Qt, QRect
 from PyQt5.QtGui import QIcon, QPixmap, QMovie
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
-from PyQt5.QtWidgets import QGraphicsOpacityEffect, QMessageBox, QWidget, QMainWindow
+from PyQt5.QtWidgets import QGraphicsOpacityEffect, QMessageBox, QMainWindow
 
-from const.CONSTANTS import writingWindow_styles, corr_style, lineEditStyle, GOOD_WORDS, incorr_style
+from const.CONSTANTS import writingWindow_styles, corr_style, GOOD_WORDS, incorr_style, MAXSTRING, \
+    dark_writingWindow_styles, dark_lineEditStyle, lineEditStyle
 from const.writingWindow_UI import WritingWindow
 
 
@@ -20,6 +21,8 @@ class WritingSession(QMainWindow, WritingWindow):
         self.current_line_num = 0
 
         self.is_letter_ignore = None
+        self.is_dark_theme = None
+
 
         self.lockedPix = QPixmap('icons/lock.png')
         self.unlockedPix = QPixmap('icons/unlock.png')
@@ -47,6 +50,9 @@ class WritingSession(QMainWindow, WritingWindow):
         timer.timeout.connect(self.showTime)
         timer.start(1)
 
+    def set_dark_theme(self, is_dark_theme):
+        self.is_dark_theme = is_dark_theme
+
     def keyPressEvent(self, event):
         if event.key() in (Qt.Key_Enter, Qt.Key_Return) and self.is_running:
             self.check_lines()
@@ -55,14 +61,13 @@ class WritingSession(QMainWindow, WritingWindow):
         self.is_letter_ignore = param
 
     def load(self, id):
-
         self.id = id
         self.secs = 0
         self.mainLine.setEnabled(False)
         self.showData.setPixmap(self.lockedPix)
 
         self.lines = self.load_text(self.id)  # load lines from database using 'SELECT'
-
+        self.show_correct(None)
         self.timerView.setText('0:00:00')
         text1 = ''
         text2 = ''.join(self.lines[self.current_line_num])
@@ -77,8 +82,32 @@ class WritingSession(QMainWindow, WritingWindow):
     def load_text(self, id):
         con = sqlite3.connect("data/data.db")
         cur = con.cursor()
-        result = cur.execute(f"""SELECT text FROM texts WHERE id={id}""").fetchone()[0].split('\\n')
+        result = cur.execute(f"""SELECT text FROM texts WHERE id={id}""").fetchone()
+        print(result[0])
+        # if '\\n' not in result[0] or '\n' not in result[0]:
+        #     print(1)
+        #     result = self.format_text(result[0])
+        if '\\n' in result[0] or '\n' in result[0]:
+            result = result[0].split('\\n')
+        else:
+            result = self.format_text(result[0])
+        print(result)
         return result
+
+    def format_text(self, text):
+        lines = []
+        line = []
+        text = text.split()
+        for word in text:
+            # print([lambda a: len(a) for a in text])
+            if len(' '.join(line)) < MAXSTRING:
+                line.append(word)
+            else:
+                incorrect = line.pop()
+                lines.append(' '.join(line))
+                line = [incorrect, word]
+        lines.append(' '.join(line))
+        return lines
 
     def check_lines(self):
         line = self.mainLine.text()
@@ -148,6 +177,8 @@ class WritingSession(QMainWindow, WritingWindow):
         msgbox.show()
 
     def show_correct(self, is_correct):
+        normal_style = dark_lineEditStyle if self.is_dark_theme else lineEditStyle
+
         if is_correct:
             sound_player = QMediaPlayer()
             url = QUrl('sounds/correct-answer.mp3')
@@ -156,9 +187,9 @@ class WritingSession(QMainWindow, WritingWindow):
             sound_player.play()
 
             self.mainLine.setStyleSheet(corr_style)
-            QTimer(self).singleShot(500, lambda: self.setStyleSheet(writingWindow_styles))
+            QTimer(self).singleShot(500, lambda: self.mainLine.setStyleSheet(normal_style))
 
-        else:
+        elif not is_correct:
             sound_player = QMediaPlayer()
             url = QUrl('sounds/bad-answer.mp3')
             content = QMediaContent(url)
@@ -166,7 +197,9 @@ class WritingSession(QMainWindow, WritingWindow):
             sound_player.play()
 
             self.mainLine.setStyleSheet(incorr_style)
-            QTimer(self).singleShot(500, lambda: self.setStyleSheet(writingWindow_styles))
+            QTimer(self).singleShot(500, lambda: self.mainLine.setStyleSheet(normal_style))
+        if is_correct is None:
+            self.mainLine.setStyleSheet(normal_style)
 
     def format_time(self, time):
         time = time // 10

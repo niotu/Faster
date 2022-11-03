@@ -84,6 +84,8 @@ class MainWindow(QStackedWidget, Ui_StackedWidget):
 
     def jump_from_settings_window(self):
         self.set_theme(self.settingsWindow.is_dark_theme)
+        self.writingWindow.show_correct(None)
+        self.menuWindow.load()
         self.setCurrentWidget(self.settingsWindow.previousWindow)
 
     def load(self):
@@ -104,15 +106,8 @@ class MainWindow(QStackedWidget, Ui_StackedWidget):
             self.setCurrentWidget(self.loginWindow)
 
     def sign_out(self):
-        with open('data/account.json', 'w') as account:
-            json.dump(default_account, account)
-
-        with open('data/settings.json', 'w') as settings:
-            json.dump(default_settings, settings)
-
-        with open('data/times.txt', 'w') as times:
-            times.write('')
-
+        from reset_data import reset
+        reset()
         self.load()
 
         self.settingsWindow.darkTheme.setChecked(False)
@@ -124,6 +119,7 @@ class MainWindow(QStackedWidget, Ui_StackedWidget):
         self.setCurrentWidget(self.loginWindow)
 
     def set_theme(self, is_dark_theme):
+        self.writingWindow.set_dark_theme(is_dark_theme)
         if is_dark_theme:
             self.menuWindow.setStyleSheet(dark_menuWindow_styles)
             self.previewWindow.setStyleSheet(dark_previewWindow_styles)

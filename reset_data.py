@@ -3,19 +3,24 @@ import sqlite3
 
 from const.CONSTANTS import default_account, default_settings, ENCODING
 
-with open('data/account.json', 'w') as account:
-    json.dump(default_account, account)
 
-with open('data/settings.json', 'w') as settings:
-    json.dump(default_settings, settings)
+def reset():
+    with open('data/account.json', 'w') as account:
+        json.dump(default_account, account)
 
-with open('data/times.txt', 'w') as times:
-    times.write('')
+    with open('data/settings.json', 'w') as settings:
+        json.dump(default_settings, settings)
 
-con = sqlite3.connect("data/data.db")
-cur = con.cursor()
+    with open('data/times.txt', 'w') as times:
+        times.write('')
 
-with open('create_db.sql', 'r', encoding=ENCODING) as sql_file:
-    sql = sql_file.read()
-result = cur.executescript(sql)
-con.close()
+    con = sqlite3.connect("data/data.db")
+    cur = con.cursor()
+
+    with open('create_db.sql', 'r', encoding=ENCODING) as sql_file:
+        sql = sql_file.read()
+    result = cur.executescript(sql)
+    con.close()
+
+
+reset()
