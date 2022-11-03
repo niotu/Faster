@@ -1,3 +1,6 @@
+from PyQt5 import QtWidgets, QtGui
+from PyQt5.QtCore import pyqtSignal
+
 lineEditStyle = 'position: absolute;' \
                 'border: 2px solid transparent;' \
                 'border-bottom: 3px ridge #000000;' \
@@ -7,8 +10,6 @@ lineEditStyle = 'position: absolute;' \
                 'font-weight: 400;' \
                 'font-size: 32px;' \
                 'line-height: 39px;' \
-                'display: flex;' \
-                'align-items: center;' \
                 'text-align: center;' \
                 'color: #000000;'
 
@@ -21,8 +22,6 @@ dark_lineEditStyle = 'position: absolute;' \
                      'font-weight: 400;' \
                      'font-size: 32px;' \
                      'line-height: 39px;' \
-                     'display: flex;' \
-                     'align-items: center;' \
                      'text-align: center;' \
                      'color: #F3F3F3;'
 
@@ -35,8 +34,6 @@ corr_style = 'position: absolute;' \
              'font-weight: 400;' \
              'font-size: 32px;' \
              'line-height: 39px;' \
-             'display: flex;' \
-             'align-items: center;' \
              'text-align: center;' \
              'color: #52FF00;'
 
@@ -49,8 +46,6 @@ incorr_style = 'position: absolute;' \
                'font-weight: 400;' \
                'font-size: 32px;' \
                'line-height: 39px;' \
-               'display: flex;' \
-               'align-items: center;' \
                'text-align: center;' \
                'color: #CA0D2F;'
 
@@ -63,8 +58,6 @@ small_line_style = 'position: absolute;' \
                    'font-weight: 400;' \
                    'font-size: 32px;' \
                    'line-height: 39px;' \
-                   'display: flex;' \
-                   'align-items: center;' \
                    'text-align: center;' \
                    'color: #000000;'
 
@@ -77,8 +70,6 @@ dark_small_line_style = 'position: absolute;' \
                         'font-weight: 400;' \
                         'font-size: 32px;' \
                         'line-height: 39px;' \
-                        'display: flex;' \
-                        'align-items: center;' \
                         'text-align: center;' \
                         'color: #F3F3F3;'
 
@@ -94,8 +85,6 @@ previewWindow_styles = 'QMainWindow#Form{background: #FAFAFA;}' \
                        "font-weight: 400;\n" \
                        "font-size: 32px;\n" \
                        "line-height: 39px;\n" \
-                       "display: flex;\n" \
-                       "align-items: center;\n" \
                        "text-align: center;\n" \
                        "color: #000000;" \
                        "}" \
@@ -108,8 +97,6 @@ previewWindow_styles = 'QMainWindow#Form{background: #FAFAFA;}' \
                        "font-weight: 400;\n" \
                        "font-size: 32px;\n" \
                        "line-height: 39px;\n" \
-                       "display: flex;\n" \
-                       "align-items: center;\n" \
                        "text-align: center;\n" \
                        "color: #000000;\n" \
                        "}" \
@@ -122,8 +109,6 @@ previewWindow_styles = 'QMainWindow#Form{background: #FAFAFA;}' \
                        "font-weight: 400;\n" \
                        "font-size: 32px;\n" \
                        "line-height: 39px;\n" \
-                       "display: flex;\n" \
-                       "align-items: center;\n" \
                        "text-align: center;\n" \
                        "color: #000000;\n" \
                        "}"
@@ -146,8 +131,6 @@ menuWindow_styles = ('QMainWindow#Form{background: #FAFAFA;}'
                      "font-weight: 400;\n"
                      "font-size: 32px;\n"
                      "line-height: 39px;\n"
-                     "display: flex;\n"
-                     "align-items: center;\n"
                      "text-align: center;\n"
                      "color: #000000;"
                      "}"
@@ -161,8 +144,6 @@ menuWindow_styles = ('QMainWindow#Form{background: #FAFAFA;}'
                      "font-weight: 400;\n"
                      "font-size: 32px;\n"
                      "line-height: 39px;\n"
-                     "display: flex;\n"
-                     "align-items: center;\n"
                      "text-align: center;\n"
                      "color: #000000;"
                      "}"
@@ -177,8 +158,6 @@ menuWindow_styles = ('QMainWindow#Form{background: #FAFAFA;}'
                      "font-weight: 400;\n"
                      "font-size: 32px;\n"
                      "line-height: 39px;\n"
-                     "display: flex;\n"
-                     "align-items: center;\n"
                      "text-align: center;\n"
                      "color: #000000;"
                      "}"
@@ -189,8 +168,6 @@ menuWindow_styles = ('QMainWindow#Form{background: #FAFAFA;}'
                      "font-weight: 400;\n"
                      "font-size: 32px;\n"
                      "line-height: 39px;\n"
-                     "display: flex;\n"
-                     "align-items: center;\n"
                      "text-align: center;\n"
                      "color: #000000;"
                      "}"
@@ -202,8 +179,6 @@ menuWindow_styles = ('QMainWindow#Form{background: #FAFAFA;}'
                      'font-weight: 400;'
                      'font-size: 32px;'
                      'line-height: 39px;'
-                     'display: flex;'
-                     'align-items: center;'
                      'text-align: center;'
                      'color: #000000;'
                      '}'
@@ -216,8 +191,6 @@ menuWindow_styles = ('QMainWindow#Form{background: #FAFAFA;}'
                      'font-weight: 400;'
                      'font-size: 32px;'
                      'line-height: 39px;'
-                     'display: flex;'
-                     'align-items: center;'
                      'text-align: center;'
                      'color: #000000;'
                      '}')
@@ -230,8 +203,6 @@ writingWindow_styles = ('QMainWindow#Form{background: #FAFAFA;}'
                         'font-weight: 400;'
                         'font-size: 32px;'
                         'line-height: 39px;'
-                        'display: flex;'
-                        'align-items: center;'
                         'text-align: center;'
                         'color: #000000;'
                         '}'
@@ -244,8 +215,6 @@ writingWindow_styles = ('QMainWindow#Form{background: #FAFAFA;}'
                         'font-weight: 400;'
                         'font-size: 32px;'
                         'line-height: 39px;'
-                        'display: flex;'
-                        'align-items: center;'
                         'text-align: center;'
                         'color: #000000;'
                         '}'
@@ -257,8 +226,6 @@ writingWindow_styles = ('QMainWindow#Form{background: #FAFAFA;}'
                         'font-weight: 400;'
                         'font-size: 32px;'
                         'line-height: 39px;'
-                        'display: flex;'
-                        'align-items: center;'
                         'text-align: center;'
                         'color: #FFFFFF;'
                         '}'
@@ -271,8 +238,6 @@ writingWindow_styles = ('QMainWindow#Form{background: #FAFAFA;}'
                         'font-weight: 400;'
                         'font-size: 32px;'
                         'line-height: 39px;'
-                        'display: flex;'
-                        'align-items: center;'
                         'text-align: center;'
                         'color: #FFFFFF;'
                         '}'
@@ -283,7 +248,6 @@ writingWindow_styles = ('QMainWindow#Form{background: #FAFAFA;}'
                         'font-weight: 400;'
                         'font-size: 32px;'
                         'line-height: 39px;'
-                        'display: flex;'
                         'color: #9E9E9E;'
                         '}'
                         'QLabel#currentLineView{'
@@ -293,7 +257,6 @@ writingWindow_styles = ('QMainWindow#Form{background: #FAFAFA;}'
                         'font-weight: 400;'
                         'font-size: 32px;'
                         'line-height: 39px;'
-                        'display: flex;'
                         'color: #000000;'
                         '}'
                         'QLabel#timerView{'
@@ -303,7 +266,6 @@ writingWindow_styles = ('QMainWindow#Form{background: #FAFAFA;}'
                         'font-weight: 400;'
                         'font-size: 32px;'
                         'line-height: 39px;'
-                        'display: flex;'
                         'color: #000000;}'
                         'QLineEdit{'
                         'position: absolute;'
@@ -315,7 +277,6 @@ writingWindow_styles = ('QMainWindow#Form{background: #FAFAFA;}'
                         'font-weight: 400;'
                         'font-size: 32px;'
                         'line-height: 39px;'
-                        'display: flex;'
                         'color: #000000;}')
 loginWindow_styles = ('QMainWindow#Form{background: #FAFAFA;}'
                       'QLabel{'
@@ -327,8 +288,6 @@ loginWindow_styles = ('QMainWindow#Form{background: #FAFAFA;}'
                       "font-weight: 400;"
                       "font-size: 32px;"
                       "line-height: 39px;"
-                      "display: flex;"
-                      "align-items: center;"
                       "text-align: center;"
                       'color: #000000;}'
                       'QPushButton{'
@@ -340,8 +299,6 @@ loginWindow_styles = ('QMainWindow#Form{background: #FAFAFA;}'
                       "font-weight: 400;\n"
                       "font-size: 32px;\n"
                       "line-height: 39px;\n"
-                      "display: flex;\n"
-                      "align-items: center;\n"
                       "text-align: center;\n"
                       "color: #000000;\n"
                       "}"
@@ -354,8 +311,6 @@ loginWindow_styles = ('QMainWindow#Form{background: #FAFAFA;}'
                       "font-weight: 400;\n"
                       "font-size: 32px;\n"
                       "line-height: 39px;\n"
-                      "display: flex;\n"
-                      "align-items: center;\n"
                       "text-align: center;\n"
                       "color: #000000;\n"
                       '}'
@@ -368,8 +323,6 @@ loginWindow_styles = ('QMainWindow#Form{background: #FAFAFA;}'
                       'font-weight: 400;'
                       'font-size: 32px;'
                       'line-height: 39px;'
-                      'display: flex;'
-                      'align-items: center;'
                       'text-align: center;'
                       'color: #000000;}')
 settingsWindow_styles = ('QMainWindow#Form{background: #FAFAFA;}'
@@ -383,8 +336,6 @@ settingsWindow_styles = ('QMainWindow#Form{background: #FAFAFA;}'
                          "font-weight: 400;\n"
                          "font-size: 32px;\n"
                          "line-height: 39px;\n"
-                         "display: flex;\n"
-                         "align-items: center;\n"
                          "text-align: center;\n"
                          "color: #000000;"
                          "}"
@@ -398,8 +349,6 @@ settingsWindow_styles = ('QMainWindow#Form{background: #FAFAFA;}'
                          "font-weight: 400;\n"
                          "font-size: 32px;\n"
                          "line-height: 39px;\n"
-                         "display: flex;\n"
-                         "align-items: center;\n"
                          "text-align: center;\n"
                          "color: #000000;"
                          "}"
@@ -413,8 +362,6 @@ settingsWindow_styles = ('QMainWindow#Form{background: #FAFAFA;}'
                          "font-weight: 400;\n"
                          "font-size: 32px;\n"
                          "line-height: 39px;\n"
-                         "display: flex;\n"
-                         "align-items: center;\n"
                          "text-align: center;\n"
                          "color: #000000;"
                          "}"
@@ -428,8 +375,6 @@ settingsWindow_styles = ('QMainWindow#Form{background: #FAFAFA;}'
                          "font-weight: 400;\n"
                          "font-size: 32px;\n"
                          "line-height: 39px;\n"
-                         "display: flex;\n"
-                         "align-items: center;\n"
                          "text-align: center;\n"
                          "color: #000000;"
                          "}"
@@ -439,8 +384,6 @@ settingsWindow_styles = ('QMainWindow#Form{background: #FAFAFA;}'
                          'font-weight: 400;'
                          'font-size: 32px;'
                          'line-height: 39px;'
-                         'display: flex;'
-                         'align-items: center;'
                          'text-align: center;'
                          'color: #000000;'
                          '}'
@@ -453,8 +396,6 @@ settingsWindow_styles = ('QMainWindow#Form{background: #FAFAFA;}'
                          "font-weight: 400;\n"
                          "font-size: 32px;\n"
                          "line-height: 39px;\n"
-                         "display: flex;\n"
-                         "align-items: center;\n"
                          "text-align: center;\n"
                          'color: #000000;'
                          '}'
@@ -467,8 +408,6 @@ settingsWindow_styles = ('QMainWindow#Form{background: #FAFAFA;}'
                          "font-weight: 400;\n"
                          "font-size: 32px;\n"
                          "line-height: 39px;\n"
-                         "display: flex;\n"
-                         "align-items: center;\n"
                          "text-align: center;\n"
                          "color: #000000;"
                          "}"
@@ -481,8 +420,6 @@ settingsWindow_styles = ('QMainWindow#Form{background: #FAFAFA;}'
                          "font-weight: 400;\n"
                          "font-size: 32px;\n"
                          "line-height: 39px;\n"
-                         "display: flex;\n"
-                         "align-items: center;\n"
                          "text-align: center;\n"
                          "color: #000000;"
                          "}"
@@ -495,8 +432,6 @@ settingsWindow_styles = ('QMainWindow#Form{background: #FAFAFA;}'
                          "font-weight: 400;\n"
                          "font-size: 32px;\n"
                          "line-height: 39px;\n"
-                         "display: flex;\n"
-                         "align-items: center;\n"
                          "text-align: center;\n"
                          "color: #FF0000;\n"
                          "}\n"
@@ -510,8 +445,6 @@ settingsWindow_styles = ('QMainWindow#Form{background: #FAFAFA;}'
                          "font-weight: 400;\n"
                          "font-size: 32px;\n"
                          "line-height: 39px;\n"
-                         "display: flex;\n"
-                         "align-items: center;\n"
                          "text-align: center;\n"
                          "color: #FF0000;\n"
                          "}")
@@ -528,8 +461,6 @@ dark_previewWindow_styles = 'QMainWindow#Form{background: #232323;}' \
                             "font-weight: 400;\n" \
                             "font-size: 32px;\n" \
                             "line-height: 39px;\n" \
-                            "display: flex;\n" \
-                            "align-items: center;\n" \
                             "text-align: center;\n" \
                             "color: #F3F3F3;" \
                             "}" \
@@ -542,8 +473,6 @@ dark_previewWindow_styles = 'QMainWindow#Form{background: #232323;}' \
                             "font-weight: 400;\n" \
                             "font-size: 32px;\n" \
                             "line-height: 39px;\n" \
-                            "display: flex;\n" \
-                            "align-items: center;\n" \
                             "text-align: center;\n" \
                             "color: #232323;\n" \
                             "}" \
@@ -556,8 +485,6 @@ dark_previewWindow_styles = 'QMainWindow#Form{background: #232323;}' \
                             "font-weight: 400;\n" \
                             "font-size: 32px;\n" \
                             "line-height: 39px;\n" \
-                            "display: flex;\n" \
-                            "align-items: center;\n" \
                             "text-align: center;\n" \
                             "color: #FAFAFA;\n" \
                             "}"
@@ -580,8 +507,6 @@ dark_menuWindow_styles = ('QMainWindow#Form{background: #232323;}'
                           "font-weight: 400;\n"
                           "font-size: 32px;\n"
                           "line-height: 39px;\n"
-                          "display: flex;\n"
-                          "align-items: center;\n"
                           "text-align: center;\n"
                           "color: #F3F3F3;"
                           "}"
@@ -595,8 +520,6 @@ dark_menuWindow_styles = ('QMainWindow#Form{background: #232323;}'
                           "font-weight: 400;\n"
                           "font-size: 32px;\n"
                           "line-height: 39px;\n"
-                          "display: flex;\n"
-                          "align-items: center;\n"
                           "text-align: center;\n"
                           "color: #000000;"
                           "}"
@@ -611,8 +534,6 @@ dark_menuWindow_styles = ('QMainWindow#Form{background: #232323;}'
                           "font-weight: 400;\n"
                           "font-size: 32px;\n"
                           "line-height: 39px;\n"
-                          "display: flex;\n"
-                          "align-items: center;\n"
                           "text-align: center;\n"
                           "color: #000000;"
                           "}"
@@ -623,8 +544,6 @@ dark_menuWindow_styles = ('QMainWindow#Form{background: #232323;}'
                           "font-weight: 400;\n"
                           "font-size: 32px;\n"
                           "line-height: 39px;\n"
-                          "display: flex;\n"
-                          "align-items: center;\n"
                           "text-align: center;\n"
                           "color: #FAFAFA;"
                           "}"
@@ -636,8 +555,6 @@ dark_menuWindow_styles = ('QMainWindow#Form{background: #232323;}'
                           'font-weight: 400;'
                           'font-size: 32px;'
                           'line-height: 39px;'
-                          'display: flex;'
-                          'align-items: center;'
                           'text-align: center;'
                           'color: #000000;'
                           '}'
@@ -650,8 +567,6 @@ dark_menuWindow_styles = ('QMainWindow#Form{background: #232323;}'
                           'font-weight: 400;'
                           'font-size: 32px;'
                           'line-height: 39px;'
-                          'display: flex;'
-                          'align-items: center;'
                           'text-align: center;'
                           'color: #000000;'
                           '}')
@@ -664,8 +579,6 @@ dark_writingWindow_styles = ('QMainWindow#Form{background: #232323;}'
                              'font-weight: 400;'
                              'font-size: 32px;'
                              'line-height: 39px;'
-                             'display: flex;'
-                             'align-items: center;'
                              'text-align: center;'
                              'color: #F1F1F1;'
                              '}'
@@ -678,8 +591,6 @@ dark_writingWindow_styles = ('QMainWindow#Form{background: #232323;}'
                              'font-weight: 400;'
                              'font-size: 32px;'
                              'line-height: 39px;'
-                             'display: flex;'
-                             'align-items: center;'
                              'text-align: center;'
                              'color: #000000;'
                              '}'
@@ -691,8 +602,6 @@ dark_writingWindow_styles = ('QMainWindow#Form{background: #232323;}'
                              'font-weight: 400;'
                              'font-size: 32px;'
                              'line-height: 39px;'
-                             'display: flex;'
-                             'align-items: center;'
                              'text-align: center;'
                              'color: #232323;'
                              '}'
@@ -705,8 +614,6 @@ dark_writingWindow_styles = ('QMainWindow#Form{background: #232323;}'
                              'font-weight: 400;'
                              'font-size: 32px;'
                              'line-height: 39px;'
-                             'display: flex;'
-                             'align-items: center;'
                              'text-align: center;'
                              'color: #202020;'
                              '}'
@@ -717,7 +624,6 @@ dark_writingWindow_styles = ('QMainWindow#Form{background: #232323;}'
                              'font-weight: 400;'
                              'font-size: 32px;'
                              'line-height: 39px;'
-                             'display: flex;'
                              'color: #9E9E9E;'
                              '}'
                              'QLabel#currentLineView{'
@@ -727,7 +633,6 @@ dark_writingWindow_styles = ('QMainWindow#Form{background: #232323;}'
                              'font-weight: 400;'
                              'font-size: 32px;'
                              'line-height: 39px;'
-                             'display: flex;'
                              'color: #FFFFFF;'
                              '}'
                              'QLabel#timerView{'
@@ -737,7 +642,6 @@ dark_writingWindow_styles = ('QMainWindow#Form{background: #232323;}'
                              'font-weight: 400;'
                              'font-size: 32px;'
                              'line-height: 39px;'
-                             'display: flex;'
                              'color: #F3F3F3;}'
                              'QLineEdit{'
                              'position: absolute;'
@@ -749,7 +653,6 @@ dark_writingWindow_styles = ('QMainWindow#Form{background: #232323;}'
                              'font-weight: 400;'
                              'font-size: 32px;'
                              'line-height: 39px;'
-                             'display: flex;'
                              'color: #F3F3F3;}')
 dark_loginWindow_styles = ('QMainWindow#Form{background: #232323;}'
                            'QLabel{'
@@ -761,8 +664,6 @@ dark_loginWindow_styles = ('QMainWindow#Form{background: #232323;}'
                            "font-weight: 400;"
                            "font-size: 32px;"
                            "line-height: 39px;"
-                           "display: flex;"
-                           "align-items: center;"
                            "text-align: center;"
                            'color: #F1F1F1;}'
                            'QPushButton{'
@@ -774,8 +675,6 @@ dark_loginWindow_styles = ('QMainWindow#Form{background: #232323;}'
                            "font-weight: 400;\n"
                            "font-size: 32px;\n"
                            "line-height: 39px;\n"
-                           "display: flex;\n"
-                           "align-items: center;\n"
                            "text-align: center;\n"
                            "color: #232323;\n"
                            "}"
@@ -789,8 +688,6 @@ dark_loginWindow_styles = ('QMainWindow#Form{background: #232323;}'
                            "font-weight: 400;\n"
                            "font-size: 32px;\n"
                            "line-height: 39px;\n"
-                           "display: flex;\n"
-                           "align-items: center;\n"
                            "text-align: center;\n"
                            "color: #232323;\n"
                            '}'
@@ -803,8 +700,6 @@ dark_loginWindow_styles = ('QMainWindow#Form{background: #232323;}'
                            'font-weight: 400;'
                            'font-size: 32px;'
                            'line-height: 39px;'
-                           'display: flex;'
-                           'align-items: center;'
                            'text-align: center;'
                            'color: #F3F3F3;}')
 dark_settingsWindow_styles = ('QMainWindow#Form{background: #232323;}'
@@ -818,8 +713,6 @@ dark_settingsWindow_styles = ('QMainWindow#Form{background: #232323;}'
                               "font-weight: 400;\n"
                               "font-size: 32px;\n"
                               "line-height: 39px;\n"
-                              "display: flex;\n"
-                              "align-items: center;\n"
                               "text-align: center;\n"
                               "color: #000000;"
                               "}"
@@ -833,8 +726,6 @@ dark_settingsWindow_styles = ('QMainWindow#Form{background: #232323;}'
                               "font-weight: 400;\n"
                               "font-size: 32px;\n"
                               "line-height: 39px;\n"
-                              "display: flex;\n"
-                              "align-items: center;\n"
                               "text-align: center;\n"
                               "color: #000000;"
                               "}"
@@ -849,8 +740,6 @@ dark_settingsWindow_styles = ('QMainWindow#Form{background: #232323;}'
                               "font-weight: 400;\n"
                               "font-size: 32px;\n"
                               "line-height: 39px;\n"
-                              "display: flex;\n"
-                              "align-items: center;\n"
                               "text-align: center;\n"
                               "color: #000000;"
                               "}"
@@ -864,8 +753,6 @@ dark_settingsWindow_styles = ('QMainWindow#Form{background: #232323;}'
                               "font-weight: 400;\n"
                               "font-size: 32px;\n"
                               "line-height: 39px;\n"
-                              "display: flex;\n"
-                              "align-items: center;\n"
                               "text-align: center;\n"
                               "color: #000000;"
                               "}"
@@ -875,8 +762,6 @@ dark_settingsWindow_styles = ('QMainWindow#Form{background: #232323;}'
                               'font-weight: 400;'
                               'font-size: 32px;'
                               'line-height: 39px;'
-                              'display: flex;'
-                              'align-items: center;'
                               'text-align: center;'
                               'color: #F3F3F3;'
                               '}'
@@ -889,8 +774,6 @@ dark_settingsWindow_styles = ('QMainWindow#Form{background: #232323;}'
                               "font-weight: 400;\n"
                               "font-size: 32px;\n"
                               "line-height: 39px;\n"
-                              "display: flex;\n"
-                              "align-items: center;\n"
                               "text-align: center;\n"
                               'color: #F3F3F3;'
                               '}'
@@ -903,8 +786,6 @@ dark_settingsWindow_styles = ('QMainWindow#Form{background: #232323;}'
                               "font-weight: 400;\n"
                               "font-size: 32px;\n"
                               "line-height: 39px;\n"
-                              "display: flex;\n"
-                              "align-items: center;\n"
                               "text-align: center;\n"
                               "color: #DFDFDF;"
                               "}"
@@ -917,8 +798,6 @@ dark_settingsWindow_styles = ('QMainWindow#Form{background: #232323;}'
                               "font-weight: 400;\n"
                               "font-size: 32px;\n"
                               "line-height: 39px;\n"
-                              "display: flex;\n"
-                              "align-items: center;\n"
                               "text-align: center;\n"
                               "color: #202020"
                               "}"
@@ -931,8 +810,6 @@ dark_settingsWindow_styles = ('QMainWindow#Form{background: #232323;}'
                               "font-weight: 400;\n"
                               "font-size: 32px;\n"
                               "line-height: 39px;\n"
-                              "display: flex;\n"
-                              "align-items: center;\n"
                               "text-align: center;\n"
                               "color: #FF3838;\n"
                               "}\n"
@@ -946,8 +823,6 @@ dark_settingsWindow_styles = ('QMainWindow#Form{background: #232323;}'
                               "font-weight: 400;\n"
                               "font-size: 32px;\n"
                               "line-height: 39px;\n"
-                              "display: flex;\n"
-                              "align-items: center;\n"
                               "text-align: center;\n"
                               "color: #FF3838;\n"
                               "}"
@@ -966,4 +841,15 @@ GOOD_WORDS = ['Отлично!', 'Очень хорошо!', 'Так держа�
 ENCODING = 'utf-8'
 
 default_settings = {"darkTheme": False, "letterIgnore": False}
-default_account = {"is_logined": False, "name": "name", "password": "password"}
+default_account = {"is_logined": False, "name": "name"}
+
+
+class Pic(QtWidgets.QLabel):
+    click = pyqtSignal()
+
+    def __init__(self, parent):
+        super().__init__(parent)
+
+    def mousePressEvent(self, ev: QtGui.QMouseEvent) -> None:
+        super().mousePressEvent(ev)
+        self.click.emit()

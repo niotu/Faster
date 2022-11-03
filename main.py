@@ -4,7 +4,6 @@ import sys
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QApplication
 
-from const.CONSTANTS import ENCODING
 from loginWindow import LoginPage
 from mainWindow import MainWindow
 from writingWindow import WritingSession

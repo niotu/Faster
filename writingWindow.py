@@ -35,8 +35,11 @@ class WritingSession(QMainWindow, WritingWindow):
         self.setupUi(self)
 
         self.sound_player = QMediaPlayer()
-        url = QUrl('sounds/correct-answer.mp3')
-        self.content = QMediaContent(url)
+        correct = QUrl('sounds/correct-answer.mp3')
+        self.correct = QMediaContent(correct)
+
+        incorrect = QUrl('sounds/bad-answer.mp3')
+        self.incorrect = QMediaContent(incorrect)
 
         self.setWindowIcon(self.icon)
         '''connects'''
@@ -70,7 +73,6 @@ class WritingSession(QMainWindow, WritingWindow):
         else:
             self.lines = self.load_text_from_db(self.id)  # load lines from database using 'SELECT'
 
-        print(self.lines)
         self.show_correct(None)
         self.timerView.setText('0:00:00')
         text1 = ''
@@ -179,21 +181,15 @@ class WritingSession(QMainWindow, WritingWindow):
         normal_style = dark_lineEditStyle if self.is_dark_theme else lineEditStyle
 
         if is_correct:
-            sound_player = QMediaPlayer()
-            url = QUrl('sounds/correct-answer.mp3')
-            content = QMediaContent(url)
-            sound_player.setMedia(content)
-            sound_player.play()
+            self.sound_player.setMedia(self.correct)
+            self.sound_player.play()
 
             self.mainLine.setStyleSheet(corr_style)
             QTimer(self).singleShot(500, lambda: self.mainLine.setStyleSheet(normal_style))
 
         elif not is_correct:
-            sound_player = QMediaPlayer()
-            url = QUrl('sounds/bad-answer.mp3')
-            content = QMediaContent(url)
-            sound_player.setMedia(content)
-            sound_player.play()
+            self.sound_player.setMedia(self.incorrect)
+            self.sound_player.play()
 
             self.mainLine.setStyleSheet(incorr_style)
             QTimer(self).singleShot(500, lambda: self.mainLine.setStyleSheet(normal_style))
@@ -262,3 +258,13 @@ class WritingSession(QMainWindow, WritingWindow):
         mas = ''.join(mas).split('\n')
         mas.remove('')
         return mas
+
+    def clear(self):
+        self.mainLine.setText('')
+        self.currentLineView.setText('')
+        self.nextLineView.setText('')
+        self.previousLineView.setText('')
+        self.lines = []
+        self.secs = 0
+        self.mainLine.setEnabled(False)
+        self.showData.setPixmap(self.lockedPix)

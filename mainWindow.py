@@ -61,6 +61,7 @@ class MainWindow(QStackedWidget, Ui_StackedWidget):
 
     def jump_menu_window(self):
         if not self.writingWindow.is_running:
+            self.writingWindow.clear()
             self.set_theme(self.settingsWindow.is_dark_theme)
             self.menuWindow.load()
             self.setCurrentWidget(self.menuWindow)
