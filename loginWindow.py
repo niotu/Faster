@@ -2,9 +2,9 @@ import json
 
 from PyQt5.QtCore import QTimer
 from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QMainWindow, QWidget
+from PyQt5.QtWidgets import QMainWindow
 
-from const.CONSTANTS import incorr_style, loginWindow_styles, small_line_style, dark_small_line_style
+from const.CONSTANTS import incorr_style, small_line_style, dark_small_line_style
 from const.loginWindow_UI import LoginWindow
 
 

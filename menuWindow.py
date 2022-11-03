@@ -1,9 +1,9 @@
 import sqlite3
 
 from PyQt5 import QtCore, QtGui
-from PyQt5.QtWidgets import QListWidgetItem, QWidget, QMainWindow
+from PyQt5.QtGui import QColor
+from PyQt5.QtWidgets import QListWidgetItem, QMainWindow
 
-from const.CONSTANTS import menuWindow_styles
 from const.menuWindow_UI import MenuWindow
 
 
@@ -47,6 +47,18 @@ class MenuPage(QMainWindow, MenuWindow):
             item.setText(title)
             self.trainsView.addItem(item)
 
+        '''lastItem will be used for a random text'''
+
+        lastItem = QListWidgetItem()
+        lastItem.setTextAlignment(QtCore.Qt.AlignCenter)
+        lastItem.setBackground(QColor(191, 215, 124))
+        font = QtGui.QFont('Inter')
+        font.setKerning(True)
+        font.setPixelSize(32)
+        lastItem.setFont(font)
+        lastItem.setText('Случайный стих')
+        self.trainsView.addItem(lastItem)
+
     def load_from_db(self):
         con = sqlite3.connect("data/data.db")
         cur = con.cursor()
@@ -58,7 +70,11 @@ class MenuPage(QMainWindow, MenuWindow):
 
     def Clicked(self, item):
         train = item.text()
-        self.selected_id = self.titles.index(train) + 1
+        if train == 'Случайный стих':
+            self.selected_id = 'random'
+            item.setText('Загрузка...')
+        else:
+            self.selected_id = self.titles.index(train) + 1
 
     def update_texts(self):
         self.load()

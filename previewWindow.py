@@ -1,6 +1,5 @@
-from PyQt5.QtWidgets import QWidget, QMainWindow
+from PyQt5.QtWidgets import QMainWindow
 
-from const.CONSTANTS import previewWindow_styles
 from const.previewWindow_UI import PreviewWindow
 
 

@@ -955,6 +955,8 @@ dark_settingsWindow_styles = ('QMainWindow#Form{background: #232323;}'
 
 '''DARK THEME STYLES END'''
 
+BASE_URL = 'https://stihi.ru'
+
 maxTime = 3600000
 
 MAXSTRING = 75

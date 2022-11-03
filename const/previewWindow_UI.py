@@ -10,8 +10,6 @@
 
 from PyQt5 import QtCore, QtWidgets
 
-from const.CONSTANTS import previewWindow_styles
-
 
 class PreviewWindow(object):
     def setupUi(self, MainWindow):

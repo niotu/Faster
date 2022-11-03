@@ -8,7 +8,7 @@ from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
 from PyQt5.QtWidgets import QGraphicsOpacityEffect, QMessageBox, QMainWindow
 
 from const.CONSTANTS import writingWindow_styles, corr_style, GOOD_WORDS, incorr_style, MAXSTRING, \
-    dark_writingWindow_styles, dark_lineEditStyle, lineEditStyle
+    dark_lineEditStyle, lineEditStyle
 from const.writingWindow_UI import WritingWindow
 
 
@@ -22,7 +22,6 @@ class WritingSession(QMainWindow, WritingWindow):
 
         self.is_letter_ignore = None
         self.is_dark_theme = None
-
 
         self.lockedPix = QPixmap('icons/lock.png')
         self.unlockedPix = QPixmap('icons/unlock.png')
@@ -66,7 +65,12 @@ class WritingSession(QMainWindow, WritingWindow):
         self.mainLine.setEnabled(False)
         self.showData.setPixmap(self.lockedPix)
 
-        self.lines = self.load_text(self.id)  # load lines from database using 'SELECT'
+        if self.id == 'random':
+            self.lines = self.load_from_internet()
+        else:
+            self.lines = self.load_text_from_db(self.id)  # load lines from database using 'SELECT'
+
+        print(self.lines)
         self.show_correct(None)
         self.timerView.setText('0:00:00')
         text1 = ''
@@ -79,19 +83,15 @@ class WritingSession(QMainWindow, WritingWindow):
         self.currentLineView.setText(text2)
         self.nextLineView.setText(text3)
 
-    def load_text(self, id):
+    def load_text_from_db(self, id):
         con = sqlite3.connect("data/data.db")
         cur = con.cursor()
         result = cur.execute(f"""SELECT text FROM texts WHERE id={id}""").fetchone()
         print(result[0])
-        # if '\\n' not in result[0] or '\n' not in result[0]:
-        #     print(1)
-        #     result = self.format_text(result[0])
         if '\\n' in result[0] or '\n' in result[0]:
             result = result[0].split('\\n')
         else:
             result = self.format_text(result[0])
-        print(result)
         return result
 
     def format_text(self, text):
@@ -99,7 +99,6 @@ class WritingSession(QMainWindow, WritingWindow):
         line = []
         text = text.split()
         for word in text:
-            # print([lambda a: len(a) for a in text])
             if len(' '.join(line)) < MAXSTRING:
                 line.append(word)
             else:
@@ -252,3 +251,14 @@ class WritingSession(QMainWindow, WritingWindow):
         if is_completed:
             with open('data/times.txt', 'a') as f:
                 f.write(str(time))
+
+    def load_from_internet(self):
+        from parsing_data.parser import Parser
+        parser = Parser()
+        parser.process()
+        mas = parser.text
+        # with open('parsing_data/parsed_text.txt', 'r', encoding=ENCODING) as f:
+        #     mas = f.read()
+        mas = ''.join(mas).split('\n')
+        mas.remove('')
+        return mas

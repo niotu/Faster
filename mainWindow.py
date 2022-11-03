@@ -2,7 +2,7 @@ import json
 
 from PyQt5.QtWidgets import QStackedWidget
 
-from const.CONSTANTS import default_settings, default_account, writingWindow_styles, loginWindow_styles, \
+from const.CONSTANTS import writingWindow_styles, loginWindow_styles, \
     settingsWindow_styles, menuWindow_styles, previewWindow_styles, dark_loginWindow_styles, dark_previewWindow_styles, \
     dark_menuWindow_styles, dark_settingsWindow_styles, dark_writingWindow_styles
 from const.main_UI import Ui_StackedWidget
@@ -148,4 +148,3 @@ class MainWindow(QStackedWidget, Ui_StackedWidget):
             self.loginWindow.set_dark_theme(self.is_dark_theme)
             self.settingsWindow.darkTheme.setChecked(self.is_dark_theme)
             self.loginWindow.setStyleSheet(loginWindow_styles)
-
