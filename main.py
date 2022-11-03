@@ -15,8 +15,6 @@ def except_hook(cls, exception, traceback):
 
 
 def main():
-    with open('data/current_text', 'w', encoding=ENCODING) as f:
-        f.write('')
     app = QApplication(sys.argv)
     application = MainWindow()
     application.addWidget(LoginPage())
