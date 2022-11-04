@@ -70,7 +70,7 @@ class MenuPage(QMainWindow, MenuWindow):
 
     def Clicked(self, item):
         train = item.text()
-        if train == 'Случайный стих':
+        if train == 'Случайный стих' or train == 'Загрузка...':
             self.selected_id = 'random'
             item.setText('Загрузка...')
         else:

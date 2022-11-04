@@ -89,7 +89,6 @@ class WritingSession(QMainWindow, WritingWindow):
         con = sqlite3.connect("data/data.db")
         cur = con.cursor()
         result = cur.execute(f"""SELECT text FROM texts WHERE id={id}""").fetchone()
-        print(result[0])
         if '\\n' in result[0] or '\n' in result[0]:
             result = result[0].split('\\n')
         else:
@@ -179,22 +178,20 @@ class WritingSession(QMainWindow, WritingWindow):
 
     def show_correct(self, is_correct):
         normal_style = dark_lineEditStyle if self.is_dark_theme else lineEditStyle
-
-        if is_correct:
+        if is_correct is None:
+            self.mainLine.setStyleSheet(normal_style)
+        elif is_correct:
             self.sound_player.setMedia(self.correct)
             self.sound_player.play()
 
             self.mainLine.setStyleSheet(corr_style)
             QTimer(self).singleShot(500, lambda: self.mainLine.setStyleSheet(normal_style))
-
         elif not is_correct:
             self.sound_player.setMedia(self.incorrect)
             self.sound_player.play()
 
             self.mainLine.setStyleSheet(incorr_style)
             QTimer(self).singleShot(500, lambda: self.mainLine.setStyleSheet(normal_style))
-        if is_correct is None:
-            self.mainLine.setStyleSheet(normal_style)
 
     def format_time(self, time):
         time = time // 10
