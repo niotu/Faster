@@ -86,7 +86,7 @@ class MainWindow(QStackedWidget, Ui_StackedWidget):
     def jump_from_settings_window(self):
         self.set_theme(self.settingsWindow.is_dark_theme)
         self.writingWindow.show_correct(None)
-        self.menuWindow.load()
+        # self.menuWindow.load()
         self.setCurrentWidget(self.settingsWindow.previousWindow)
 
     def load(self):

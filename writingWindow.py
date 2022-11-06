@@ -250,10 +250,11 @@ class WritingSession(QMainWindow, WritingWindow):
         parser = Parser()
         parser.process()
         mas = parser.text
-        # with open('parsing_data/parsed_text.txt', 'r', encoding=ENCODING) as f:
-        #     mas = f.read()
-        mas = ''.join(mas).split('\n')
-        mas.remove('')
+        mas = ''.join(mas).rstrip().split('\n')
+        try:
+            mas.remove('')
+        except Exception:
+            pass
         return mas
 
     def clear(self):

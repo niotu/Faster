@@ -21,6 +21,7 @@ class MenuPage(QMainWindow, MenuWindow):
         self.trainsView.itemClicked.connect(self.Clicked)
 
     def load(self):
+        self.trainsView.clear()
         texts = self.load_from_db()  # load text list from database
         titles = []
 

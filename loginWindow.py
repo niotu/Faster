@@ -74,6 +74,7 @@ class LoginPage(QMainWindow, LoginWindow):
             QTimer(self).singleShot(1500, lambda: self.clear(normal_line))
 
     def clear(self, normal_line):
+        self.darkThemeView.setPixmap(self.moon)
         self.nameEdit.setStyleSheet(normal_line)
 
     def reset(self):
