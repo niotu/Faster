@@ -170,7 +170,7 @@ class WritingSession(QMainWindow, WritingWindow):
 
         buttonN = msgbox.button(QMessageBox.No)
         buttonN.setText("Начать заново")
-        buttonN.clicked.connect(lambda: self.load(self.filename))
+        buttonN.clicked.connect(lambda: self.load(self.id))
         buttonN.setStyleSheet(writingWindow_styles)
 
         msgbox.setWindowTitle('Урааа')

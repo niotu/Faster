@@ -1,5 +1,4 @@
 from random import randint
-from time import sleep
 
 import lxml.html
 import requests
@@ -14,12 +13,7 @@ class Parser:
         self.session = requests.session()
 
     def get_txt_from_url(self, url: str):
-        try:
-            r = self.session.get(url, timeout=(3.05, 7.05))
-        except Exception as e:
-            print("\nsleep 0.5 min")
-            sleep(30)
-            r = self.session.get(url, timeout=(3.05, 7.05))
+        r = self.session.get(url, timeout=(3.05, 7.05))
 
         return lxml.html.document_fromstring(r.text)
 

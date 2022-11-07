@@ -35,7 +35,6 @@ class LoginPage(QMainWindow, LoginWindow):
         self.kitten_view.click.connect(lambda: self.play())
 
     def play(self):
-        print(1)
         self.sound_player.play()
 
     def set_dark_theme(self, is_dark_theme):

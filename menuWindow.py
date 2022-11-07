@@ -1,5 +1,6 @@
 import sqlite3
 
+import requests
 from PyQt5 import QtCore, QtGui
 from PyQt5.QtGui import QColor
 from PyQt5.QtWidgets import QListWidgetItem, QMainWindow
@@ -50,15 +51,16 @@ class MenuPage(QMainWindow, MenuWindow):
 
         '''lastItem will be used for a random text'''
 
-        lastItem = QListWidgetItem()
-        lastItem.setTextAlignment(QtCore.Qt.AlignCenter)
-        lastItem.setBackground(QColor(191, 215, 124))
-        font = QtGui.QFont('Inter')
-        font.setKerning(True)
-        font.setPixelSize(32)
-        lastItem.setFont(font)
-        lastItem.setText('Случайный стих')
-        self.trainsView.addItem(lastItem)
+        if self.internet_on():
+            lastItem = QListWidgetItem()
+            lastItem.setTextAlignment(QtCore.Qt.AlignCenter)
+            lastItem.setBackground(QColor(191, 215, 124))
+            font = QtGui.QFont('Inter')
+            font.setKerning(True)
+            font.setPixelSize(32)
+            lastItem.setFont(font)
+            lastItem.setText('Случайный стих')
+            self.trainsView.addItem(lastItem)
 
     def load_from_db(self):
         con = sqlite3.connect("data/data.db")
@@ -73,9 +75,16 @@ class MenuPage(QMainWindow, MenuWindow):
         train = item.text()
         if train == 'Случайный стих' or train == 'Загрузка...':
             self.selected_id = 'random'
-            item.setText('Загрузка...')
+            # item.setText('Загрузка...')
         else:
             self.selected_id = self.titles.index(train) + 1
+
+    def internet_on(self):
+        try:
+            r = requests.session().get('https://stihi.ru', timeout=(3.05, 7.05))
+            return True
+        except Exception as e:
+            return False
 
     def update_texts(self):
         self.load()
