@@ -1,5 +1,5 @@
 import sqlite3
-import os.path
+
 import requests
 from PyQt5 import QtCore, QtGui
 from PyQt5.QtGui import QColor

@@ -58,7 +58,6 @@ class LoginPage(QMainWindow, LoginWindow):
         data = {"is_logined": True, "name": self.name}
         with open('data/account.json', 'w') as account:
             json.dump(data, account)
-        import db_create
 
     def incorr_reqs(self, widget):
         if self.is_dark_theme:
