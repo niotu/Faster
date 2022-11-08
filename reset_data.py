@@ -14,13 +14,14 @@ def reset():
     with open('data/times.txt', 'w') as times:
         times.write('')
 
-    con = sqlite3.connect("data/data.db")
+    con = sqlite3.connect("data.db")
     cur = con.cursor()
 
-    with open('create_db.sql', 'r', encoding=ENCODING) as sql_file:
+    with open('data/create_db.sql', 'r', encoding=ENCODING) as sql_file:
         sql = sql_file.read()
     result = cur.executescript(sql)
     con.close()
 
 
-reset()
+if __name__ == '__main__':
+    reset()

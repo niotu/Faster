@@ -31,6 +31,7 @@ class WritingSession(QMainWindow, WritingWindow):
         self.is_running = False
         self.secs = 0
         self.is_completed = False
+        self.is_on_training = False
 
         self.setupUi(self)
 
@@ -86,7 +87,7 @@ class WritingSession(QMainWindow, WritingWindow):
         self.nextLineView.setText(text3)
 
     def load_text_from_db(self, id):
-        con = sqlite3.connect("data/data.db")
+        con = sqlite3.connect("data.db")
         cur = con.cursor()
         result = cur.execute(f"""SELECT text FROM texts WHERE id={id}""").fetchone()
         if '\\n' in result[0] or '\n' in result[0]:
@@ -138,6 +139,7 @@ class WritingSession(QMainWindow, WritingWindow):
 
     def start(self, button):
         self.is_running = True
+        self.is_on_training = True
         self.mainLine.setEnabled(True)
         if self.is_completed:
             self.secs = 0
@@ -157,6 +159,7 @@ class WritingSession(QMainWindow, WritingWindow):
         self.stop(button=None)
         self.is_completed = True
         self.current_line_num = 0
+        self.is_on_training = False
 
         msgbox = QMessageBox(self)
         msgbox.setText(GOOD_WORDS[randint(0, len(GOOD_WORDS) - 1)])
@@ -243,7 +246,7 @@ class WritingSession(QMainWindow, WritingWindow):
     def export_to_db(self, time, is_completed):
         if is_completed:
             with open('data/times.txt', 'a') as f:
-                f.write(str(time))
+                f.write(str(time) + '\n')
 
     def load_from_internet(self):
         from parsing_data.parser import Parser
@@ -258,6 +261,7 @@ class WritingSession(QMainWindow, WritingWindow):
         return mas
 
     def clear(self):
+        self.is_on_training = False
         self.mainLine.setText('')
         self.currentLineView.setText('')
         self.nextLineView.setText('')

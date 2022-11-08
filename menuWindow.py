@@ -1,5 +1,5 @@
 import sqlite3
-
+import os.path
 import requests
 from PyQt5 import QtCore, QtGui
 from PyQt5.QtGui import QColor
@@ -14,6 +14,8 @@ class MenuPage(QMainWindow, MenuWindow):
         self.selected_id = None
         self.texts = []
         self.titles = []
+
+        self.db_path = None
 
         self.setupUi(self)
 
@@ -63,12 +65,20 @@ class MenuPage(QMainWindow, MenuWindow):
             self.trainsView.addItem(lastItem)
 
     def load_from_db(self):
-        con = sqlite3.connect("data/data.db")
+        con = sqlite3.connect("data.db")
         cur = con.cursor()
         res = []
-        for item in cur.execute("""SELECT text FROM texts""").fetchall():
-            res.append(item[0])
-        con.close()
+        try:
+            for item in cur.execute("""SELECT text FROM texts""").fetchall():
+                res.append(item[0])
+            con.close()
+        except Exception:
+            with open('data/create_db.sql', 'r', encoding='utf-8') as sql_file:
+                sql = sql_file.read()
+            result = cur.executescript(sql)
+            for item in cur.execute("""SELECT text FROM texts""").fetchall():
+                res.append(item[0])
+            con.close()
         return res
 
     def Clicked(self, item):

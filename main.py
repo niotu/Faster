@@ -14,6 +14,8 @@ def except_hook(cls, exception, traceback):
 
 
 def main():
+    import db_create
+
     app = QApplication(sys.argv)
     application = MainWindow()
     application.addWidget(LoginPage())

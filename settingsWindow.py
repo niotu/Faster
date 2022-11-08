@@ -84,7 +84,7 @@ class SettingsPage(QMainWindow, SettingsWindow):
     def load_time(self):
         with open('data/times.txt', 'r') as f:
             times = f.readlines()
-        times = list(map(int, times))
+        times = list(map(int, list(map(str.rstrip, times))))
         return self.format_time(sum(times) // len(times) if len(times) > 0 else 0)
 
     def format_time(self, time):
@@ -103,7 +103,7 @@ class SettingsPage(QMainWindow, SettingsWindow):
             self.load_file_to_db(text)
 
     def load_file_to_db(self, text):
-        con = sqlite3.connect("data/data.db")
+        con = sqlite3.connect("data.db")
         cur = con.cursor()
         num = cur.execute(f"""SELECT id FROM texts """).fetchall()
         num = num[-1][0] + 1
