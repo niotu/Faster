@@ -2,10 +2,11 @@ import json
 import sqlite3
 
 from PyQt5 import QtGui
+from PyQt5.QtCore import QRect
 from PyQt5.QtGui import QPixmap, QIcon
-from PyQt5.QtWidgets import QFileDialog, QMainWindow
+from PyQt5.QtWidgets import QFileDialog, QMainWindow, QMessageBox
 
-from const.CONSTANTS import ENCODING, settingsWindow_styles, dark_settingsWindow_styles
+from const.CONSTANTS import ENCODING, settingsWindow_styles, dark_settingsWindow_styles, writingWindow_styles
 from const.settingsWindow_UI import SettingsWindow
 
 
@@ -100,7 +101,16 @@ class SettingsPage(QMainWindow, SettingsWindow):
         if filename != '':
             with open(filename, 'r', encoding=ENCODING) as f:
                 text = f.read()
-            self.load_file_to_db(text)
+            try:
+                if text != '' and len(text.split()) > 2:
+                    self.load_file_to_db(text)
+            except Exception as e:
+                msgbox = QMessageBox(self)
+                msgbox.setText('Файл не соответсвует требованиям или возникла другая ошибка.\n'
+                               'Файл не должен быть пустым.\n'
+                               "Файл должен иметь более 2 слов")
+                msgbox.setStyleSheet(writingWindow_styles)
+                msgbox.setGeometry(QRect(810, 490, 300, 100))
 
     def load_file_to_db(self, text):
         con = sqlite3.connect("data.db")
