@@ -36,10 +36,10 @@ class MenuPage(QMainWindow, MenuWindow):
             mas = text
             title = ' '.join(mas.replace('\\n', '\n').rstrip().split()[:2]).capitalize()
             if title not in titles:
-                titles.append(title if title[-1] not in ',./-_;:' else title[:-1])
+                titles.append(title if title[-1] not in ',./-_;:—–' else title[:-1])
             else:
                 title = ' '.join(mas.replace('\\n', '\n').rstrip().split()[:3]).capitalize()
-                titles.append(title if title[-1] not in ',./-_;:' else title[:-1])
+                titles.append(title if title[-1] not in ',./-_;:—–' else title[:-1])
         self.titles = titles
 
         '''put titles on listWidget'''

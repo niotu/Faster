@@ -91,7 +91,7 @@ class WritingSession(QMainWindow, WritingWindow):
         cur = con.cursor()
         result = cur.execute(f"""SELECT text FROM texts WHERE id={id}""").fetchone()
         if '\\n' in result[0] or '\n' in result[0]:
-            result = result[0].split('\\n')
+            result = result[0].replace('—', '-').replace('–', '-').split('\\n')
         else:
             result = self.format_text(result[0])
         return result
@@ -253,7 +253,7 @@ class WritingSession(QMainWindow, WritingWindow):
         parser = Parser()
         parser.process()
         mas = parser.text
-        mas = ''.join(mas).rstrip().split('\n')
+        mas = ''.join(mas).replace('—', '-').replace('–', '-').rstrip().split('\n')
         try:
             mas.remove('')
         except Exception:
