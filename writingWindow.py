@@ -90,6 +90,7 @@ class WritingSession(QMainWindow, WritingWindow):
         con = sqlite3.connect("data.db")
         cur = con.cursor()
         result = cur.execute(f"""SELECT text FROM texts WHERE id={id}""").fetchone()
+
         if '\\n' in result[0] or '\n' in result[0]:
             result = result[0].replace('—', '-').replace('–', '-').split('\\n')
         else:

@@ -36,6 +36,8 @@ class MainWindow(QStackedWidget, Ui_StackedWidget):
         self.addWidget(self.writingWindow)
         self.addWidget(self.settingsWindow)
 
+        '''connect to qStackedWidget'''
+
         self.loginWindow.createAccount.clicked.connect(lambda: self.jump_from_login_window(self.previewWindow))
         self.loginWindow.darkThemeView.click.connect(self.set_dark_theme)
         self.previewWindow.goNext.clicked.connect(self.jump_menu_window)
